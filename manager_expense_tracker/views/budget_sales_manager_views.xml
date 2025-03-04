@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+
+        <record id="view_budget_sales_manager_form" model="ir.ui.view">
+            <field name="name">budget.sales.manager.form</field>
+            <field name="model">budget.sales.manager</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Budget Sales Manager">
+                    <sheet>
+                        <group>
+                            <field name="manager_id"/>
+                            <field name="phone"/>
+                            <field name="active"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_budget_sales_manager_list" model="ir.ui.view">
+            <field name="name">budget.sales.manager.list</field>
+            <field name="model">budget.sales.manager</field>
+            <field name="type">list</field>  <!-- ✅ Правильно -->
+            <field name="arch" type="xml">
+                <list string="Budget Sales Managers">
+                    <field name="manager_id"/>
+                    <field name="phone"/>
+                    <field name="active"/>
+                </list>
+            </field>
+        </record>
+
+
+        <record id="action_budget_sales_manager" model="ir.actions.act_window">
+            <field name="name">Budget Sales Managers</field>
+            <field name="res_model">budget.sales.manager</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

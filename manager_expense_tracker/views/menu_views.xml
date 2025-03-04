@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <menuitem
+                id="menu_budget_sales_tracking_root"
+                name="Budget Sales Tracking"
+                sequence="10"
+                web_icon="manager_expense_tracker,static/description/icon.png"/>
+
+
+        <menuitem
+                id="menu_budget_sales_manager"
+                name="Sales Managers"
+                parent="menu_budget_sales_tracking_root"
+                sequence="20"
+                action="action_budget_sales_manager"/>
+    </data>
+</odoo>
