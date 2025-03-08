@@ -1,0 +1,52 @@
+<odoo>
+    <data>
+
+
+        <record id="view_manager_work_day_form" model="ir.ui.view">
+            <field name="name">manager.work.day.form</field>
+            <field name="model">manager.work.day</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Manager Work Day">
+                    <sheet>
+                        <group>
+                            <field name="manager_id"/>
+                            <field name="date"/>
+                            <field name="start_time"/>
+                            <field name="end_time"/>
+                            <field name="odometer_start"/>
+                            <field name="odometer_end"/>
+                            <field name="distance"/>
+                            <field name="is_holiday"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_manager_work_day_list" model="ir.ui.view">
+            <field name="name">manager.work.day.list</field>
+            <field name="model">manager.work.day</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Manager Work Days">
+                    <field name="manager_id"/>
+                    <field name="date"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="distance"/>
+                    <field name="is_holiday"/>
+                </list>
+            </field>
+        </record>
+
+
+        <record id="action_manager_work_day" model="ir.actions.act_window">
+            <field name="name">Manager Work Days</field>
+            <field name="res_model">manager.work.day</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+    </data>
+</odoo>

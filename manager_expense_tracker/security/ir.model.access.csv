@@ -1,3 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_budget_sales_manager_user,budget.sales.manager user,model_budget_sales_manager,group_budget_sales_user,1,0,0,0
 access_budget_sales_manager_admin,budget.sales.manager admin,model_budget_sales_manager,group_budget_sales_admin,1,1,1,1
+
+access_manager_work_day_user,manager.work.day user,model_manager_work_day,group_budget_sales_user,1,0,0,0
+access_manager_work_day_admin,manager.work.day admin,model_manager_work_day,group_budget_sales_admin,1,1,1,1
+
+access_manager_finance_user,manager.finance user,model_manager_finance,group_budget_sales_user,1,0,0,0
+access_manager_finance_admin,manager.finance admin,model_manager_finance,group_budget_sales_admin,1,1,1,1
+
+access_fuel_prices_user,fuel.prices user,model_fuel_prices,group_budget_sales_user,1,0,0,0
+access_fuel_prices_admin,fuel.prices admin,model_fuel_prices,group_budget_sales_admin,1,1,1,1
+
+access_fuel_price_update_wizard,fuel.price.update.wizard user,model_fuel_price_update_wizard,base.group_user,1,1,1,0

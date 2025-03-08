@@ -22,7 +22,7 @@
         <record id="view_budget_sales_manager_list" model="ir.ui.view">
             <field name="name">budget.sales.manager.list</field>
             <field name="model">budget.sales.manager</field>
-            <field name="type">list</field>  <!-- ✅ Правильно -->
+            <field name="type">list</field>
             <field name="arch" type="xml">
                 <list string="Budget Sales Managers">
                     <field name="manager_id"/>
