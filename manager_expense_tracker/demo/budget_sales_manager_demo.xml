@@ -1,0 +1,23 @@
+<odoo>
+    <record id="user_e_piddubny" model="res.users">
+        <field name="name">Піддубний Євген</field>
+        <field name="login">e.piddubny@example.com</field>
+    </record>
+
+    <record id="user_o_halyshyn" model="res.users">
+        <field name="name">Галишин Оксана</field>
+        <field name="login">o.halyshyn@example.com</field>
+    </record>
+
+    <record id="budget_sales_manager_e_piddubny" model="budget.sales.manager">
+        <field name="manager_id" ref="user_e_piddubny"/>
+        <field name="phone">+380671234567</field>
+        <field name="active">True</field>
+    </record>
+
+    <record id="budget_sales_manager_o_halyshyn" model="budget.sales.manager">
+        <field name="manager_id" ref="user_o_halyshyn"/>
+        <field name="phone">+380672345678</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

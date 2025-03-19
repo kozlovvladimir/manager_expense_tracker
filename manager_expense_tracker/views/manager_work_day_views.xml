@@ -1,7 +1,6 @@
 <odoo>
     <data>
 
-
         <record id="view_manager_work_day_form" model="ir.ui.view">
             <field name="name">manager.work.day.form</field>
             <field name="model">manager.work.day</field>
@@ -12,18 +11,20 @@
                         <group>
                             <field name="manager_id"/>
                             <field name="date"/>
-                            <field name="start_time"/>
-                            <field name="end_time"/>
                             <field name="odometer_start"/>
                             <field name="odometer_end"/>
-                            <field name="distance"/>
-                            <field name="is_holiday"/>
+                            <field name="km" readonly="1"/>
+                            <field name="fuel_price_per_liter" readonly="1"/>
+                            <field name="fuel_consumption_per_100km" readonly="1"/>
+                            <field name="depreciation_rate" readonly="1"/>
+                            <field name="fuel_expenses" readonly="1"/>
+                            <field name="depreciation_expenses" readonly="1"/>
+                            <field name="total_expenses" readonly="1"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
-
 
         <record id="view_manager_work_day_list" model="ir.ui.view">
             <field name="name">manager.work.day.list</field>
@@ -33,10 +34,10 @@
                 <list string="Manager Work Days">
                     <field name="manager_id"/>
                     <field name="date"/>
-                    <field name="start_time"/>
-                    <field name="end_time"/>
-                    <field name="distance"/>
-                    <field name="is_holiday"/>
+                    <field name="km"/>
+                    <field name="fuel_expenses"/>
+                    <field name="depreciation_expenses"/>
+                    <field name="total_expenses"/>
                 </list>
             </field>
         </record>

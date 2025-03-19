@@ -1,0 +1,135 @@
+<odoo>
+    <data>
+        <!-- Manager's daily expense report form -->
+        <record id="view_manager_daily_report_form" model="ir.ui.view">
+            <field name="name">manager.daily.report.form</field>
+            <field name="model">manager.daily.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Daily Report">
+                    <header>
+                        <button name="%(action_finance_report)d" string="Print Finance Report" type="action" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="manager_id"/>
+                            <field name="date"/>
+                            <field name="description"/>
+                        </group>
+                        <notebook>
+                            <page string="Trip Details">
+                                <group>
+                                    <field name="odometer_start"/>
+                                    <field name="odometer_end"/>
+                                    <field name="distance"/>
+                                </group>
+                            </page>
+                            <page string="Fuel &amp; Expenses">
+                                <group>
+                                    <field name="fuel_price_per_liter"/>
+                                    <field name="fuel_used"/>
+                                    <field name="fuel_cost"/>
+                                    <field name="depreciation_rate"/>
+                                    <field name="depreciation_cost"/>
+                                </group>
+                            </page>
+                            <page string="Finance">
+                                <group>
+                                    <field name="income"/>
+                                    <field name="expenses_manual"/>
+                                    <field name="total_expenses"/>
+                                    <field name="balance"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <button name="create_fuel_expense" string="Create Fuel Expense" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- List for viewing manager reports -->
+        <record id="view_manager_daily_report_list" model="ir.ui.view">
+            <field name="name">manager.daily.report.list</field>
+            <field name="model">manager.daily.report</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Daily Reports">
+                    <field name="manager_id"/>
+                    <field name="date"/>
+                    <field name="income"/>
+                    <field name="total_expenses"/>
+                    <field name="balance"/>
+                    <field name="description"/>
+                    <field name="odometer_start"/>
+                    <field name="odometer_end"/>
+                    <field name="distance"/>
+                    <field name="fuel_price_per_liter"/>
+                    <field name="fuel_used"/>
+                    <field name="fuel_cost"/>
+                    <field name="depreciation_rate"/>
+                    <field name="depreciation_cost"/>
+                    <field name="expenses_manual"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Pivot View -->
+        <record id="view_manager_daily_report_pivot" model="ir.ui.view">
+            <field name="name">manager.daily.report.pivot</field>
+            <field name="model">manager.daily.report</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Daily Reports Analysis">
+                    <field name="manager_id" type="row"/>
+                    <field name="date" type="col"/>
+                    <field name="income" type="measure"/>
+                    <field name="total_expenses" type="measure"/>
+                    <field name="balance" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Graph View -->
+        <record id="view_manager_daily_report_graph" model="ir.ui.view">
+            <field name="name">manager.daily.report.graph</field>
+            <field name="model">manager.daily.report</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Daily Report Graph" type="bar">
+                    <field name="date" type="row"/>
+                    <field name="income" type="measure"/>
+                    <field name="total_expenses" type="measure"/>
+                    <field name="balance" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Search View -->
+        <record id="view_manager_daily_report_search" model="ir.ui.view">
+            <field name="name">manager.daily.report.search</field>
+            <field name="model">manager.daily.report</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Daily Reports">
+                    <field name="manager_id"/>
+                    <field name="date"/>
+                    <field name="income"/>
+                    <field name="total_expenses"/>
+                    <field name="balance"/>
+                    <filter name="today" string="Today" domain="[('date', '=', context_today())]"/>
+                    <filter name="this_week" string="This Week" domain="[('date', '>=', context_today())]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action to open the manager's report list -->
+        <record id="action_manager_daily_report" model="ir.actions.act_window">
+            <field name="name">Manager Daily Reports</field>
+            <field name="res_model">manager.daily.report</field>
+            <field name="view_mode">list,form,pivot,graph,search</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <template id="finance_report_template" t-name="manager_expense_tracker.finance_report_template">
+            <t t-call="web.internal_layout">
+                <main>
+                    <t t-set="company" t-value="object.company_id if object else None"/>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2 style="text-align: center;">Finance Report</h2>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Manager</th>
+                                    <th>Income</th>
+                                    <th>Fuel Cost</th>
+                                    <th>Depreciation Cost</th>
+                                    <th>Total Expenses</th>
+                                    <th>Balance</th>
+                                    <th>Description</th>
+                                    <th>Odometer Start</th>
+                                    <th>Odometer End</th>
+                                    <th>Distance</th>
+                                    <th>Fuel Price per Liter</th>
+                                    <th>Fuel Used</th>
+                                    <th>Depreciation Rate</th>
+                                    <th>Expenses Manual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="doc">
+                                    <tr>
+                                        <td><span t-esc="doc.date or 'N/A'"/></td>
+                                        <td><span t-esc="doc.manager_id.name or 'N/A'"/></td>
+                                        <td><span t-esc="doc.income or '0.0'"/></td>
+                                        <td><span t-esc="doc.fuel_cost or '0.0'"/></td>
+                                        <td><span t-esc="doc.depreciation_cost or '0.0'"/></td>
+                                        <td><span t-esc="doc.total_expenses or '0.0'"/></td>
+                                        <td><span t-esc="doc.balance or '0.0'"/></td>
+                                        <td><span t-esc="doc.description or 'N/A'"/></td>
+                                        <td><span t-esc="doc.odometer_start or 'N/A'"/></td>
+                                        <td><span t-esc="doc.odometer_end or 'N/A'"/></td>
+                                        <td><span t-esc="doc.distance or '0.0'"/></td>
+                                        <td><span t-esc="doc.fuel_price_per_liter or '0.0'"/></td>
+                                        <td><span t-esc="doc.fuel_used or '0.0'"/></td>
+                                        <td><span t-esc="doc.depreciation_rate or '0.0'"/></td>
+                                        <td><span t-esc="doc.expenses_manual or '0.0'"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </main>
+            </t>
+        </template>
+
+        <!-- Define the Report Action -->
+        <record id="action_finance_report" model="ir.actions.report">
+            <field name="name">Finance Report</field>
+            <field name="model">manager.daily.report</field>
+            <field name="binding_model_id" ref="model_manager_daily_report"/>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">manager_expense_tracker.finance_report_template</field>
+            <field name="print_report_name">"Finance Report - %s" % (object.date if object else 'Unknown')</field>
+        </record>
+    </data>
+</odoo>

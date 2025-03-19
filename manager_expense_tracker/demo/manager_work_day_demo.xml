@@ -1,0 +1,23 @@
+<odoo>
+    <record id="work_day_e_piddubny_01_aug_2023" model="manager.work.day">
+        <field name="manager_id" ref="budget_sales_manager_e_piddubny"/>
+        <field name="date">2023-08-01</field>
+        <field name="start_time">0.0</field>
+        <field name="end_time">0.0</field>
+        <field name="responsible_id" ref="res.users_demo_marina_sliusar"/>
+        <field name="odometer_start">41148</field>
+        <field name="odometer_end">41190</field>
+        <field name="is_holiday">False</field>
+    </record>
+
+    <record id="work_day_o_halyshyn_01_aug_2023" model="manager.work.day">
+        <field name="manager_id" ref="budget_sales_manager_o_halyshyn"/>
+        <field name="date">2023-08-01</field>
+        <field name="start_time">0.0</field>
+        <field name="end_time">0.0</field>
+        <field name="responsible_id" ref="res.users_demo_marina_sliusar"/>
+        <field name="odometer_start">128044</field>
+        <field name="odometer_end">128063</field>
+        <field name="is_holiday">False</field>
+    </record>
+</odoo>

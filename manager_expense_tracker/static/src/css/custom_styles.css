@@ -1,0 +1,11 @@
+
+.manager-daily-report-list th,
+.manager-daily-report-list td {
+    border-right: 1px solid #d3d3d3 !important;
+}
+
+
+.manager-daily-report-list th:last-child,
+.manager-daily-report-list td:last-child {
+    border-right: none !important;
+}

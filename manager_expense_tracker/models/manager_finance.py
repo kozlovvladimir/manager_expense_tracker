@@ -1,4 +1,5 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 class ManagerFinance(models.Model):
     _name = "manager.finance"
@@ -27,10 +28,18 @@ class ManagerFinance(models.Model):
         store=True
     )
     balance = fields.Float(
+        string="Balance",
         compute="_compute_balance",
         store=True
     )
-    approved = fields.Boolean()
+    approved = fields.Boolean(string="Approved")
+
+    fuel_price_id = fields.Many2one(
+        "fuel.prices",
+        string="Fuel Price Record",
+        compute="_compute_fuel_price",
+        store=True
+    )
 
     @api.depends("income", "expenses_other", "expenses_auto")
     def _compute_balance(self):
@@ -52,13 +61,25 @@ class ManagerFinance(models.Model):
             ], limit=1)
 
             fuel_data = self.env["fuel.prices"].sudo().search([
-                ("month", "=", record.date.strftime('%Y-%m'))
-            ], limit=1)
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], order="date desc", limit=1)
+
+            record.fuel_price_id = fuel_data
 
             if work_day and fuel_data:
                 record.expenses_auto = (
-                    (work_day.distance * fuel_data.consumption / 100 * fuel_data.fuel_price) +
-                    (work_day.distance * fuel_data.depreciation)
+                    (work_day.km * fuel_data.consumption / 100 * fuel_data.fuel_price) +
+                    (work_day.km * fuel_data.depreciation)
                 )
             else:
                 record.expenses_auto = 0
+
+    @api.depends("date", "manager_id")
+    def _compute_fuel_price(self):
+        """Automatically link finance record to the correct fuel price record."""
+        for record in self:
+            record.fuel_price_id = self.env["fuel.prices"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], order="date desc", limit=1)

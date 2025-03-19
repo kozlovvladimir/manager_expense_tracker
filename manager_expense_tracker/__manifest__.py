@@ -1,14 +1,13 @@
 {
     "name": "Budget Sales Tracking",
-    "summary": "Tracking work days, mileage,"
-               "and finances of budget sales managers",
-    "description": "This module allows tracking workdays, mileage,"
+    "summary": "Tracking work days, mileage, and finances of budget sales managers",
+    "description": "This module allows tracking workdays, mileage, "
                    "and financial transactions of budget sales managers.",
     "author": "Your Name",
     # "website": "https://yourwebsite.com",
     "category": "Sales",
     "version": "1.0",
-    "depends": ["base", "sale", "account"],
+    "depends": ["base", "sale", "account", "hr_expense", "fleet"],
     "data": [
         "security/security_rules.xml",
         "security/ir.model.access.csv",
@@ -17,17 +16,27 @@
         "views/manager_finance_views.xml",
         "views/fuel_prices_views.xml",
         "wizard/fuel_price_update.xml",
+        "views/manager_daily_report_views.xml",
         "views/menu_views.xml",
-        # "views/log_changes_views.xml",
-        # "reports/finance_report_template.xml",
+        "report/finance_report_template.xml",
         # "data/demo_data.xml",
     ],
-    "demo": ["data/demo_data.xml"],
+    "demo": [
+        "demo/budget_sales_manager_demo.xml",
+        "demo/fuel_prices_demo.xml",
+        "demo/manager_finance_demo.xml",
+        "demo/manager_work_day_demo.xml",
+    ],
     "installable": True,
     "application": True,
     "auto_install": False,
     "license": "LGPL-3",
-    'images': [
-        'static/description/icon.png'
+    "images": [
+        "static/description/icon.png"
     ],
+    "assets": {
+        "web.assets_backend": [
+            "manager_expense_tracker/static/src/css/custom_styles.css",
+        ],
+    },
 }

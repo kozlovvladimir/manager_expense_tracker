@@ -1,0 +1,9 @@
+<odoo>
+    <record id="fuel_price_august_2023" model="fuel.prices">
+        <field name="month">2023-08</field>
+        <field name="fuel_price">1.45</field>
+        <field name="consumption">8.5</field>
+        <field name="depreciation">1.25</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

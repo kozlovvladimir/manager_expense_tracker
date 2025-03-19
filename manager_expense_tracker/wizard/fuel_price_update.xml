@@ -1,32 +1,27 @@
 <odoo>
     <data>
-        <!-- Wizard Form View -->
         <record id="view_fuel_price_update_wizard_form" model="ir.ui.view">
             <field name="name">fuel.price.update.wizard.form</field>
             <field name="model">fuel.price.update.wizard</field>
+            <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Update Fuel Price">
+                <form string="Update Fuel Prices">
                     <sheet>
                         <group>
-                            <field name="month"/>
+                            <field name="manager_ids" widget="many2many_tags"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
                             <field name="new_fuel_price"/>
+                            <field name="new_consumption"/>
+                            <field name="new_depreciation"/>
                         </group>
                         <footer>
-                            <button string="Update" type="object" name="update_fuel_price" class="btn-primary"/>
+                            <button string="Update" type="object" name="update_fuel_prices" class="btn-primary"/>
                             <button string="Cancel" class="btn-secondary" special="cancel"/>
                         </footer>
                     </sheet>
                 </form>
             </field>
-        </record>
-
-        <!-- Action to Open Wizard -->
-        <record id="action_fuel_price_update_wizard" model="ir.actions.act_window">
-            <field name="name">Update Fuel Price</field>
-            <field name="res_model">fuel.price.update.wizard</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_fuel_price_update_wizard_form"/>
-            <field name="target">new</field>  <!-- Opens as a pop-up window -->
         </record>
     </data>
 </odoo>

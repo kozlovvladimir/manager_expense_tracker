@@ -45,5 +45,14 @@
             action="action_fuel_prices"
         />
 
+        <menuitem
+            id="menu_manager_daily_report"
+            name="Manager Daily Reports"
+            parent="menu_budget_sales_tracking_root"
+            sequence="60"
+            action="action_manager_daily_report"
+        />
+
+
     </data>
 </odoo>
