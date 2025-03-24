@@ -1,19 +1,30 @@
 <odoo>
-    <record id="manager_finance_e_piddubny_01_aug_2023" model="manager.finance">
-        <field name="manager_id" ref="budget_sales_manager_e_piddubny"/>
-        <field name="date">2023-08-01</field>
-        <field name="income">1000.00</field>
-        <field name="expenses_other">200.00</field>
-        <field name="expenses_auto">50.00</field>
-        <field name="approved">True</field>
-    </record>
+    <data noupdate="0">
 
-    <record id="manager_finance_o_halyshyn_01_aug_2023" model="manager.finance">
-        <field name="manager_id" ref="budget_sales_manager_o_halyshyn"/>
-        <field name="date">2023-08-01</field>
-        <field name="income">1500.00</field>
-        <field name="expenses_other">300.00</field>
-        <field name="expenses_auto">60.00</field>
-        <field name="approved">False</field>
-    </record>
+        <record id="finance_1" model="manager.finance">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_1"/>
+            <field name="date">2025-03-01</field>
+            <field name="income">15000.00</field>
+            <field name="expenses_other">2000.00</field>
+            <field name="approved">False</field>
+        </record>
+
+
+        <record id="finance_2" model="manager.finance">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_2"/>
+            <field name="date">2025-03-01</field>
+            <field name="income">12000.00</field>
+            <field name="expenses_other">1500.00</field>
+            <field name="approved">False</field>
+        </record>
+
+
+        <record id="finance_3" model="manager.finance">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_3"/>
+            <field name="date">2025-03-01</field>
+            <field name="income">17000.00</field>
+            <field name="expenses_other">1800.00</field>
+            <field name="approved">True</field>
+        </record>
+    </data>
 </odoo>

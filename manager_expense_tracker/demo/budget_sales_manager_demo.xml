@@ -1,23 +1,27 @@
 <odoo>
-    <record id="user_e_piddubny" model="res.users">
-        <field name="name">Піддубний Євген</field>
-        <field name="login">e.piddubny@example.com</field>
-    </record>
+    <data noupdate="0">
 
-    <record id="user_o_halyshyn" model="res.users">
-        <field name="name">Галишин Оксана</field>
-        <field name="login">o.halyshyn@example.com</field>
-    </record>
+        <record id="manager_1" model="budget.sales.manager">
+            <field name="manager_id" ref="base.user_demo"/>
+            <field name="phone">+380671234567</field>
+            <field name="code_1c">MGR001</field>
+            <field name="active">True</field>
+        </record>
 
-    <record id="budget_sales_manager_e_piddubny" model="budget.sales.manager">
-        <field name="manager_id" ref="user_e_piddubny"/>
-        <field name="phone">+380671234567</field>
-        <field name="active">True</field>
-    </record>
 
-    <record id="budget_sales_manager_o_halyshyn" model="budget.sales.manager">
-        <field name="manager_id" ref="user_o_halyshyn"/>
-        <field name="phone">+380672345678</field>
-        <field name="active">True</field>
-    </record>
+        <record id="manager_2" model="budget.sales.manager">
+            <field name="manager_id" ref="base.user_admin"/>
+            <field name="phone">+380681234567</field>
+            <field name="code_1c">MGR002</field>
+            <field name="active">True</field>
+        </record>
+
+
+        <record id="manager_3" model="budget.sales.manager">
+            <field name="manager_id" ref="base.user_root"/>
+            <field name="phone">+380691234567</field>
+            <field name="code_1c">MGR003</field>
+            <field name="active">True</field>
+        </record>
+    </data>
 </odoo>

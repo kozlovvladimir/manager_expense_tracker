@@ -1,5 +1,6 @@
+# === manager_finance.py ===
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+
 
 class ManagerFinance(models.Model):
     _name = "manager.finance"
@@ -43,13 +44,19 @@ class ManagerFinance(models.Model):
 
     @api.depends("income", "expenses_other", "expenses_auto")
     def _compute_balance(self):
-        """Calculate balance as income minus total expenses."""
         for record in self:
             record.balance = record.income - (record.expenses_other + record.expenses_auto)
 
-    @api.depends("manager_id", "date")
+    @api.depends(
+        "manager_id",
+        "date",
+        "manager_id.fuel_price_ids.fuel_price",
+        "manager_id.fuel_price_ids.consumption",
+        "manager_id.fuel_price_ids.depreciation",
+        "manager_id.fuel_price_ids.date",
+        "manager_id.fuel_price_ids.write_date"
+    )
     def _compute_auto_expenses(self):
-        """Compute auto expenses based on distance traveled and fuel cost."""
         for record in self:
             if not record.manager_id or not record.date:
                 record.expenses_auto = 0
@@ -62,7 +69,7 @@ class ManagerFinance(models.Model):
 
             fuel_data = self.env["fuel.prices"].sudo().search([
                 ("manager_id", "=", record.manager_id.id),
-                ("date", "=", record.date)
+                ("date", "<=", record.date)
             ], order="date desc", limit=1)
 
             record.fuel_price_id = fuel_data
@@ -75,11 +82,78 @@ class ManagerFinance(models.Model):
             else:
                 record.expenses_auto = 0
 
-    @api.depends("date", "manager_id")
+    @api.depends(
+        "manager_id",
+        "date",
+        "manager_id.fuel_price_ids.fuel_price",
+        "manager_id.fuel_price_ids.consumption",
+        "manager_id.fuel_price_ids.depreciation",
+        "manager_id.fuel_price_ids.date",
+        "manager_id.fuel_price_ids.write_date"
+    )
     def _compute_fuel_price(self):
-        """Automatically link finance record to the correct fuel price record."""
         for record in self:
             record.fuel_price_id = self.env["fuel.prices"].search([
                 ("manager_id", "=", record.manager_id.id),
-                ("date", "=", record.date)
+                ("date", "<=", record.date)
             ], order="date desc", limit=1)
+
+    def write(self, vals):
+        res = super().write(vals)
+        for record in self:
+            report = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if report:
+                report.write({
+                    "income": record.income,
+                    "expenses_manual": record.expenses_other,
+                    "balance": record.balance,
+                })
+        return res
+
+# === manager_daily_report.py ===
+from odoo import models, fields, api, _
+
+
+class ManagerDailyReport(models.Model):
+    _name = "manager.daily.report"
+    _description = "Daily Report of Manager"
+    _inherit = "hr.expense"
+
+    name = fields.Char(string="Report Name", required=True, default="Daily Report")
+    manager_id = fields.Many2one("budget.sales.manager", string="Manager", required=True)
+    date = fields.Date(string="Date", required=True, default=fields.Date.today)
+    income = fields.Float(string="Income", default=0.0)
+    expenses_manual = fields.Float(string="Other Expenses", default=0.0)
+    total_expenses = fields.Float(string="Total Expenses", compute="_compute_total_expenses", store=True)
+    balance = fields.Float(string="Balance", compute="_compute_balance", store=True)
+
+    fuel_cost = fields.Float(string="Fuel Cost", default=0.0)
+    depreciation_cost = fields.Float(string="Depreciation Cost", default=0.0)
+
+    @api.depends("fuel_cost", "depreciation_cost", "expenses_manual")
+    def _compute_total_expenses(self):
+        for record in self:
+            record.total_expenses = record.fuel_cost + record.depreciation_cost + record.expenses_manual
+
+    @api.depends("income", "total_expenses")
+    def _compute_balance(self):
+        for record in self:
+            record.balance = record.income - record.total_expenses
+
+    def write(self, vals):
+        res = super().write(vals)
+        for record in self:
+            finance = self.env["manager.finance"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if finance:
+                finance.write({
+                    "income": record.income,
+                    "expenses_other": record.expenses_manual,
+                    "balance": record.balance,
+                })
+        return res

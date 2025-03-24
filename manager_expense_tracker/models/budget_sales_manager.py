@@ -39,7 +39,7 @@ class BudgetSalesManager(models.Model):
 
     @api.depends("manager_id")
     def _compute_name(self):
-        """Автоматично заповнює ім'я менеджера"""
+        """automatically fills in the manager's name"""
         for record in self:
             record.name = record.manager_id.name if record.manager_id else "N/A"
 

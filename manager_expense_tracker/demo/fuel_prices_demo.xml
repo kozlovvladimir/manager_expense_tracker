@@ -1,9 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="fuel_price_august_2023" model="fuel.prices">
-        <field name="month">2023-08</field>
-        <field name="fuel_price">1.45</field>
-        <field name="consumption">8.5</field>
-        <field name="depreciation">1.25</field>
-        <field name="active">True</field>
-    </record>
+    <data noupdate="0">
+
+        <record id="fuel_price_1" model="fuel.prices">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_1"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">56.50</field>
+            <field name="consumption">10.5</field>
+            <field name="depreciation">1.25</field>
+            <field name="active">True</field>
+        </record>
+
+
+        <record id="fuel_price_2" model="fuel.prices">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_2"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">55.80</field>
+            <field name="consumption">11.0</field>
+            <field name="depreciation">1.20</field>
+            <field name="active">True</field>
+        </record>
+
+
+        <record id="fuel_price_3" model="fuel.prices">
+            <field name="manager_id" ref="budget_sales_manager_demo.manager_3"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">57.20</field>
+            <field name="consumption">9.8</field>
+            <field name="depreciation">1.30</field>
+            <field name="active">True</field>
+        </record>
+    </data>
 </odoo>

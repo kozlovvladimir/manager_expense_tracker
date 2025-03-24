@@ -27,6 +27,7 @@
                             <page string="Fuel &amp; Expenses">
                                 <group>
                                     <field name="fuel_price_per_liter"/>
+                                    <field name="fuel_consumption_rate"/>
                                     <field name="fuel_used"/>
                                     <field name="fuel_cost"/>
                                     <field name="depreciation_rate"/>
@@ -56,7 +57,7 @@
             <field name="model">manager.daily.report</field>
             <field name="type">list</field>
             <field name="arch" type="xml">
-                <list string="Daily Reports">
+                <list string="Daily Reports" class="manager-daily-report-list">
                     <field name="manager_id"/>
                     <field name="date"/>
                     <field name="income"/>

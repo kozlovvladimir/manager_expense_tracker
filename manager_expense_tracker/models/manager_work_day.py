@@ -71,13 +71,19 @@ class ManagerWorkDay(models.Model):
 
     @api.depends("odometer_start", "odometer_end")
     def _compute_km(self):
-        """Calculate distance as the difference between odometer readings."""
         for record in self:
             record.km = max(record.odometer_end - record.odometer_start, 0)
 
-    @api.depends("manager_id", "date")
+    @api.depends(
+        "manager_id",
+        "date",
+        "manager_id.fuel_price_ids.fuel_price",
+        "manager_id.fuel_price_ids.consumption",
+        "manager_id.fuel_price_ids.depreciation",
+        "manager_id.fuel_price_ids.date",
+        "manager_id.fuel_price_ids.write_date"
+    )
     def _compute_fuel_data(self):
-        """Fetch last entered fuel data for calculations."""
         for record in self:
             last_fuel_data = self.env["fuel.prices"].search([
                 ("manager_id", "=", record.manager_id.id),
@@ -95,19 +101,40 @@ class ManagerWorkDay(models.Model):
 
     @api.depends("km", "fuel_price_per_liter", "fuel_consumption_per_100km")
     def _compute_fuel_expenses(self):
-        """Calculate fuel expenses based on distance and fuel consumption."""
         for record in self:
             record.fuel_expenses = (
-                                               record.km * record.fuel_consumption_per_100km / 100) * record.fuel_price_per_liter
+                record.km * record.fuel_consumption_per_100km / 100
+            ) * record.fuel_price_per_liter
 
     @api.depends("km", "depreciation_rate")
     def _compute_depreciation_expenses(self):
-        """Calculate depreciation expenses."""
         for record in self:
             record.depreciation_expenses = record.km * record.depreciation_rate
 
     @api.depends("fuel_expenses", "depreciation_expenses")
     def _compute_total_expenses(self):
-        """Calculate total expenses (fuel + depreciation)."""
         for record in self:
             record.total_expenses = record.fuel_expenses + record.depreciation_expenses
+
+    @api.model
+    def create(self, vals):
+        record = super().create(vals)
+        record._sync_with_daily_report()
+        return record
+
+    def write(self, vals):
+        res = super().write(vals)
+        self._sync_with_daily_report()
+        return res
+
+    def _sync_with_daily_report(self):
+        for record in self:
+            report = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if report:
+                report.write({
+                    "odometer_start": record.odometer_start,
+                    "odometer_end": record.odometer_end,
+                })

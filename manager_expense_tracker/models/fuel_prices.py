@@ -1,6 +1,7 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from datetime import timedelta, date
+from datetime import timedelta
+
 
 class FuelPrices(models.Model):
     _name = "fuel.prices"
@@ -54,19 +55,11 @@ class FuelPrices(models.Model):
 
     @api.model
     def _generate_dates(self, start_date, end_date):
-        """
-        Generate a list of dates between start_date and end_date (inclusive).
-        Used for batch updating fuel prices.
-        """
         if start_date > end_date:
             raise ValidationError(_("Start date cannot be later than end date."))
         return [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range((end_date - start_date).days + 1)]
 
     def update_fuel_price(self, new_fuel_price, new_consumption, new_depreciation):
-        """
-        Update fuel price, consumption, and depreciation for selected records.
-        Also logs the changes.
-        """
         for record in self:
             old_values = {
                 "fuel_price": record.fuel_price,
@@ -91,9 +84,6 @@ class FuelPrices(models.Model):
             )
 
     def open_update_wizard(self):
-        """
-        Opens the fuel price update wizard with pre-filled values.
-        """
         return {
             "type": "ir.actions.act_window",
             "name": "Update Fuel Price",
@@ -108,3 +98,44 @@ class FuelPrices(models.Model):
                 "default_new_depreciation": self.depreciation
             },
         }
+
+    def open_mass_update_wizard(self):
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Mass Update Fuel Prices",
+            "res_model": "fuel.price.update.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+                "default_manager_ids": [(6, 0, self.mapped("manager_id").ids)],
+            }
+        }
+
+    def write(self, vals):
+        res = super().write(vals)
+        for record in self:
+            reports = self.env['manager.daily.report'].search([
+                ('manager_id', '=', record.manager_id.id),
+                ('date', '=', record.date)
+            ])
+            for report in reports:
+                report._compute_fuel_price()
+                report._compute_fuel_expenses()
+                report._compute_total_expenses()
+                report._compute_balance()
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for record in records:
+            reports = self.env['manager.daily.report'].search([
+                ('manager_id', '=', record.manager_id.id),
+                ('date', '=', record.date)
+            ])
+            for report in reports:
+                report._compute_fuel_price()
+                report._compute_fuel_expenses()
+                report._compute_total_expenses()
+                report._compute_balance()
+        return records

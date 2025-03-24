@@ -1,0 +1,1001 @@
+#. module: manager_expense_tracker
+#: model:ir.actions.report,print_report_name:manager_expense_tracker.action_finance_report
+msgid "\"Finance Report - %s\" % (object.date if object else 'Unknown')"
+msgstr "\"Фінансовий звіт - %s\" % (object.date if object else 'Невідомо')"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__account_id
+msgid "Account"
+msgstr "Рахунок"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__accounting_date
+msgid "Accounting Date"
+msgstr "Дата обліку"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_needaction
+msgid "Action Needed"
+msgstr "Потрібна дія"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__active
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__active
+msgid "Active"
+msgstr "Активний"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_ids
+msgid "Activities"
+msgstr "Дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Позначка виняткової дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_state
+msgid "Activity State"
+msgstr "Стан дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Іконка типу дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__account_id
+msgid "An expense account is expected"
+msgstr "Очікується рахунок для витрат"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Аналітичний розподіл"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__analytic_precision
+msgid "Analytic Precision"
+msgstr "Точність аналітики"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__approved
+msgid "Approved"
+msgstr "Схвалено"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__approved_by
+msgid "Approved By"
+msgstr "Схвалено"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__approved_on
+msgid "Approved On"
+msgstr "Дата схвалення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_attachment_count
+msgid "Attachment Count"
+msgstr "Кількість вкладень"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__attachment_ids
+msgid "Attachments"
+msgstr "Вкладення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__expenses_auto
+msgid "Auto Expenses"
+msgstr "Автоматичні витрати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields.selection,name:manager_expense_tracker.selection__manager_daily_report__fuel_price_source__auto
+msgid "Auto-filled"
+msgstr "Автоматично заповнено"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__fuel_expense_id
+msgid "Automatically created fuel expense record."
+msgstr "Автоматично створений запис про витрати на паливо."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__balance
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__balance
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Balance"
+msgstr "Баланс"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__tax_ids
+msgid ""
+"Both price-included and price-excluded taxes will behave as price-included "
+"taxes for expenses."
+msgstr ""
+"Як податки, включені у ціну, так і виключені, поводитимуться як включені для витрат."
+
+#. module: manager_expense_tracker
+#: model:res.groups,name:manager_expense_tracker.group_budget_sales_admin
+msgid "Budget Sales Admin"
+msgstr "Адміністратор бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_budget_sales_manager
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_budget_sales_manager_form
+msgid "Budget Sales Manager"
+msgstr "Менеджер з бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.act_window,name:manager_expense_tracker.action_budget_sales_manager
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_budget_sales_manager_list
+msgid "Budget Sales Managers"
+msgstr "Менеджери з бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_budget_sales_tracking_root
+msgid "Budget Sales Tracking"
+msgstr "Відстеження бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model:res.groups,name:manager_expense_tracker.group_budget_sales_user
+msgid "Budget Sales User"
+msgstr "Користувач бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_price_update_wizard_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_id
+msgid "Category"
+msgstr "Категорія"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_main_attachment_checksum
+msgid "Checksum/SHA1"
+msgstr "Контрольна сума/SHA1"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__code_1c
+msgid "Code 1C"
+msgstr "Код 1С"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__company_id
+msgid "Company"
+msgstr "Компанія"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"Конвертація між одиницями виміру можлива лише в межах однієї категорії. "
+"Конвертація здійснюється на основі коефіцієнтів."
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Create Fuel Expense"
+msgstr "Створити витрати на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__create_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__create_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__create_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__create_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__create_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__create_uid
+msgid "Created by"
+msgstr "Створено"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__create_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__create_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__create_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__create_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__create_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__create_date
+msgid "Created on"
+msgstr "Дата створення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__currency_id
+msgid "Currency"
+msgstr "Валюта"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__currency_rate
+msgid "Currency Rate"
+msgstr "Курс валюти"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Daily Report"
+msgstr "Щоденний звіт"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_graph
+msgid "Daily Report Graph"
+msgstr "Графік щоденного звіту"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_manager_daily_report
+msgid "Daily Report of Manager"
+msgstr "Щоденний звіт менеджера"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_list
+msgid "Daily Reports"
+msgstr "Щоденні звіти"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_pivot
+msgid "Daily Reports Analysis"
+msgstr "Аналіз щоденних звітів"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__date
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Date"
+msgstr "Дата"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__date
+msgid "Date when the fuel price was set."
+msgstr "Дата встановлення ціни на паливо."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__depreciation
+msgid "Depreciation (per km)"
+msgstr "Амортизація (за км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__depreciation_cost
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Depreciation Cost"
+msgstr "Вартість амортизації"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__depreciation_expenses
+msgid "Depreciation Expenses"
+msgstr "Амортизаційні витрати"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Depreciation Rate"
+msgstr "Ставка амортизації"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__depreciation_rate
+msgid "Depreciation Rate (per km)"
+msgstr "Ставка амортизації (за км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__depreciation
+msgid "Depreciation cost per km."
+msgstr "Вартість амортизації за 1 км."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__depreciation_rate
+msgid "Depreciation per km"
+msgstr "Амортизація за км"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Description"
+msgstr "Опис"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__display_name
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__display_name
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__display_name
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__display_name
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__display_name
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__display_name
+msgid "Display Name"
+msgstr "Відображуване ім’я"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Distance"
+msgstr "Відстань"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__distance
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__km
+msgid "Distance (km)"
+msgstr "Відстань (км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr "Аналітичний рахунок розподілу"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__duplicate_expense_ids
+msgid "Duplicate Expense"
+msgstr "Дубльовані витрати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__employee_id
+msgid "Employee"
+msgstr "Працівник"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__date_end
+msgid "End Date"
+msgstr "Кінцева дата"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__sheet_id
+msgid "Expense Report"
+msgstr "Звіт про витрати"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Expenses Manual"
+msgstr "Ручні витрати"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Finance"
+msgstr "Фінанси"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.report,name:manager_expense_tracker.action_finance_report
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Finance Report"
+msgstr "Фінансовий звіт"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__finances_ids
+msgid "Financial Records"
+msgstr "Фінансові записи"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_follower_ids
+msgid "Followers"
+msgstr "Підписники"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Підписники (Партнери)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Іконка Font Awesome, напр. fa-tasks"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Fuel & Expenses"
+msgstr "Паливо та витрати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_consumption_rate
+msgid "Fuel Consumption (L/100 km)"
+msgstr "Споживання пального (л/100 км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__fuel_consumption_per_100km
+msgid "Fuel Consumption (L/100km)"
+msgstr "Споживання пального (л/100 км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__consumption
+msgid "Fuel Consumption (per 100 km)"
+msgstr "Споживання пального (на 100 км)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_cost
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Fuel Cost"
+msgstr "Вартість пального"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_expense_id
+msgid "Fuel Expense"
+msgstr "Витрати на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__fuel_expenses
+msgid "Fuel Expenses"
+msgstr "Витрати на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__fuel_price
+msgid "Fuel Price (per liter)"
+msgstr "Ціна пального (за літр)"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_fuel_price_update_wizard
+msgid "Fuel Price Mass Update Wizard"
+msgstr "Майстер масового оновлення цін на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__fuel_price_id
+msgid "Fuel Price Record"
+msgstr "Запис ціни на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_price_source
+msgid "Fuel Price Source"
+msgstr "Джерело ціни на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_price_per_liter
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__fuel_price_per_liter
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Fuel Price per Liter"
+msgstr "Ціна пального за літр"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.act_window,name:manager_expense_tracker.action_fuel_prices
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__fuel_price_ids
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_fuel_prices
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_form
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_list
+msgid "Fuel Prices"
+msgstr "Ціни на паливо"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_pivot
+msgid "Fuel Prices Analysis"
+msgstr "Аналіз цін на паливо"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_graph
+msgid "Fuel Prices Trends"
+msgstr "Тенденції цін на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_fuel_prices
+msgid "Fuel Prices and Consumption Rates"
+msgstr "Ціни на паливо та норми витрат"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Fuel Used"
+msgstr "Використано пального"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__fuel_used
+msgid "Fuel Used (L)"
+msgstr "Використано пального (л)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__consumption
+msgid "Fuel consumption rate per 100 km."
+msgstr "Норма витрати пального на 100 км."
+
+#. module: manager_expense_tracker
+#: model:ir.model.constraint,message:manager_expense_tracker.constraint_fuel_prices_unique_manager_date
+msgid "Fuel price for this manager and date already exists!"
+msgstr "Ціна пального для цього менеджера і дати вже існує!"
+
+#. module: manager_expense_tracker
+#. odoo-python
+#: code:addons/manager_expense_tracker/models/fuel_prices.py:0
+msgid ""
+"Fuel price updated: {} → {} <br/>Consumption updated: {} → {} "
+"<br/>Depreciation updated: {} → {}"
+msgstr ""
+"Ціну пального оновлено: {} → {} <br/>Споживання оновлено: {} → {} "
+"<br/>Амортизацію оновлено: {} → {}"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__has_message
+msgid "Has Message"
+msgstr "Є повідомлення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__is_holiday
+msgid "Holiday"
+msgstr "Вихідний день"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__id
+msgid "ID"
+msgstr "ID"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_exception_icon
+msgid "Icon"
+msgstr "Іконка"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Іконка для позначення виняткової дії."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Якщо відмічено, нові повідомлення потребують вашої уваги."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__message_has_error
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Якщо відмічено, деякі повідомлення не доставлено через помилку."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__income
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__income
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Income"
+msgstr "Дохід"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__active
+msgid "Indicates whether this fuel price entry is currently active."
+msgstr "Позначає, чи є цей запис ціни на паливо активним."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__is_editable
+msgid "Is Editable By Current User"
+msgstr "Доступно для редагування поточним користувачем"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_is_follower
+msgid "Is Follower"
+msgstr "Є підписником"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__is_multiple_currency
+msgid "Is currency_id different from the company_currency_id"
+msgstr "Валюта відрізняється від валюти компанії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__label_currency_rate
+msgid "Label Currency Rate"
+msgstr "Позначка курсу валюти"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__write_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__write_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__write_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__write_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__write_uid
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__write_uid
+msgid "Last Updated by"
+msgstr "Останнє оновлення зробив"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__write_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__write_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__write_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__write_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__write_date
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__write_date
+msgid "Last Updated on"
+msgstr "Дата останнього оновлення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Головне вкладення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__manager_id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_prices__manager_id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__manager_id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__manager_id
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__manager_id
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Manager"
+msgstr "Менеджер"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.act_window,name:manager_expense_tracker.action_manager_daily_report
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_manager_daily_report
+msgid "Manager Daily Reports"
+msgstr "Щоденні звіти менеджера"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.act_window,name:manager_expense_tracker.action_manager_finance
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_manager_finance
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_finance_form
+msgid "Manager Finance"
+msgstr "Фінанси менеджера"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_finance_list
+msgid "Manager Finances"
+msgstr "Фінансові записи менеджера"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_work_day_form
+msgid "Manager Work Day"
+msgstr "Робочий день менеджера"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.act_window,name:manager_expense_tracker.action_manager_work_day
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_manager_work_day
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_work_day_list
+msgid "Manager Work Days"
+msgstr "Робочі дні менеджера"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_manager_finance
+msgid "Manager's Finance"
+msgstr "Фінанси менеджера"
+
+#. module: manager_expense_tracker
+#: model:ir.model,name:manager_expense_tracker.model_manager_work_day
+msgid "Manager's Work Day"
+msgstr "Робочий день менеджера"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__manager_ids
+msgid "Managers"
+msgstr "Менеджери"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields.selection,name:manager_expense_tracker.selection__manager_daily_report__fuel_price_source__manual
+msgid "Manually Entered"
+msgstr "Введено вручну"
+
+#. module: manager_expense_tracker
+#: model:ir.actions.server,name:manager_expense_tracker.action_fuel_prices_mass_update
+msgid "Mass Update Fuel Prices"
+msgstr "Масове оновлення цін на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_has_error
+msgid "Message Delivery error"
+msgstr "Помилка доставки повідомлення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_ids
+msgid "Messages"
+msgstr "Повідомлення"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Кінцевий термін моєї дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__name
+msgid "Name"
+msgstr "Назва"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__new_consumption
+msgid "New Consumption"
+msgstr "Нове споживання"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__new_depreciation
+msgid "New Depreciation"
+msgstr "Нова амортизація"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__new_fuel_price
+msgid "New Fuel Price"
+msgstr "Нова ціна на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Кінцевий термін наступної дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_summary
+msgid "Next Activity Summary"
+msgstr "Опис наступної дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_type_id
+msgid "Next Activity Type"
+msgstr "Тип наступної дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Кількість дій"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__nb_attachment
+msgid "Number of Attachments"
+msgstr "Кількість вкладень"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_has_error_counter
+msgid "Number of errors"
+msgstr "Кількість помилок"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Кількість повідомлень, що потребують дії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Кількість повідомлень з помилкою доставки"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__odometer_end
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__odometer_end
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Odometer End"
+msgstr "Пробіг (кінець)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__odometer_start
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__odometer_start
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Odometer Start"
+msgstr "Пробіг (початок)"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__expenses_manual
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__expenses_other
+msgid "Other Expenses"
+msgstr "Інші витрати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__payment_mode
+msgid "Paid By"
+msgstr "Оплачено"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_budget_sales_manager__phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Print Finance Report"
+msgstr "Друкувати фінансовий звіт"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_description
+msgid "Product Description"
+msgstr "Опис товару"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_has_cost
+msgid "Product Has Cost"
+msgstr "Товар має вартість"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__quantity
+msgid "Quantity"
+msgstr "Кількість"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__company_currency_id
+msgid "Report Company Currency"
+msgstr "Валюта компанії у звіті"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__description
+msgid "Report Description"
+msgstr "Опис звіту"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__name
+msgid "Report Name"
+msgstr "Назва звіту"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__activity_user_id
+msgid "Responsible User"
+msgstr "Відповідальний користувач"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Помилка доставки SMS"
+
+#. module: manager_expense_tracker
+#: model:ir.ui.menu,name:manager_expense_tracker.menu_budget_sales_manager
+msgid "Sales Managers"
+msgstr "Менеджери з продажу"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__same_receipt_expense_ids
+msgid "Same Receipt Expense"
+msgstr "Витрати з того ж чеку"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_budget_sales_manager_search
+msgid "Search Budget Sales Managers"
+msgstr "Пошук менеджерів з бюджетних продажів"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_search
+msgid "Search Daily Reports"
+msgstr "Пошук щоденних звітів"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_search
+msgid "Search Fuel Prices"
+msgstr "Пошук цін на паливо"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__manager_id
+msgid "Select the manager for whom this price is set."
+msgstr "Оберіть менеджера, для якого встановлено цю ціну."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__accounting_date
+msgid "Specify the bill date of the related vendor bill."
+msgstr "Вкажіть дату рахунку від постачальника."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_fuel_price_update_wizard__date_start
+msgid "Start Date"
+msgstr "Початкова дата"
+
+#. module: manager_expense_tracker
+#. odoo-python
+#: code:addons/manager_expense_tracker/models/fuel_prices.py:0
+msgid "Start date cannot be later than end date."
+msgstr "Початкова дата не може бути пізнішою за кінцеву."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Статус на основі дій:\n"
+"Прострочено: Термін уже минув\n"
+"Сьогодні: Подія на сьогодні\n"
+"Заплановано: Майбутні події."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__tax_amount
+msgid "Tax amount"
+msgstr "Сума податку"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__tax_amount_currency
+msgid "Tax amount in Currency"
+msgstr "Сума податку у валюті"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__tax_amount
+msgid "Tax amount in company currency"
+msgstr "Сума податку у валюті компанії"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__tax_amount_currency
+msgid "Tax amount in currency"
+msgstr "Сума податку у валюті"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__tax_ids
+msgid "Taxes"
+msgstr "Податки"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_fuel_prices__fuel_price
+msgid "The price of fuel per liter for the given date."
+msgstr "Ціна пального за літр на вказану дату."
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_search
+msgid "This Week"
+msgstr "Цього тижня"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_search
+msgid "Today"
+msgstr "Сьогодні"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__total_amount
+msgid "Total"
+msgstr "Усього"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__total_expenses
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_work_day__total_expenses
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
+msgid "Total Expenses"
+msgstr "Загальні витрати"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__total_amount_currency
+msgid "Total In Currency"
+msgstr "Усього у валюті"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__untaxed_amount_currency
+msgid "Total Untaxed Amount In Currency"
+msgstr "Усього без податків у валюті"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_manager_daily_report_form
+msgid "Trip Details"
+msgstr "Деталі поїздки"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Тип виняткової дії у записі."
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_budget_sales_manager__code_1c
+msgid "Unique identifier for integration with 1C system"
+msgstr "Унікальний ідентифікатор для інтеграції з системою 1С"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__price_unit
+msgid "Unit Price"
+msgstr "Ціна за одиницю"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_uom_id
+msgid "Unit of Measure"
+msgstr "Одиниця виміру"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_uom_category_id
+msgid "UoM Category"
+msgstr "Категорія одиниці виміру"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_price_update_wizard_form
+msgid "Update"
+msgstr "Оновити"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_price_update_wizard_form
+msgid "Update Fuel Prices"
+msgstr "Оновити ціни на паливо"
+
+#. module: manager_expense_tracker
+#: model_terms:ir.ui.view,arch_db:manager_expense_tracker.view_fuel_prices_form
+msgid "Update Price"
+msgstr "Оновити ціну"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__vehicle_id
+msgid "Vehicle"
+msgstr "Автомобіль"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__vendor_id
+msgid "Vendor"
+msgstr "Постачальник"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__website_message_ids
+msgid "Website Messages"
+msgstr "Повідомлення з сайту"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__website_message_ids
+msgid "Website communication history"
+msgstr "Історія комунікацій з сайту"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__product_has_tax
+msgid "Whether tax is defined on a selected product"
+msgstr "Чи вказано податок на вибраний товар"
+
+

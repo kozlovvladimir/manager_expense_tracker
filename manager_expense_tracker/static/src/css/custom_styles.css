@@ -1,11 +1,22 @@
-
+/* Додати вертикальні лінії до таблиці */
 .manager-daily-report-list th,
 .manager-daily-report-list td {
     border-right: 1px solid #d3d3d3 !important;
 }
 
-
+/* Зняти вертикальну лінію у останнього стовпця */
 .manager-daily-report-list th:last-child,
 .manager-daily-report-list td:last-child {
     border-right: none !important;
+}
+
+/* Додати горизонтальні лінії для заголовків і полів */
+.manager-daily-report-list th,
+.manager-daily-report-list td {
+    border-bottom: 1px solid #d3d3d3 !important;
+}
+
+/* Зняти горизонтальну лінію для останнього рядка */
+.manager-daily-report-list tr:last-child td {
+    border-bottom: none !important;
 }
