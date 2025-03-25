@@ -6,11 +6,13 @@ It includes tests for creating work day records, calculating fuel expenses,
 depreciation expenses, and total expenses based on work day data.
 """
 
+
 class TestManagerWorkDay(TransactionCase):
     """
     This class contains test cases for the 'manager.work.day' model.
     It includes tests for creating work day records, as well as calculating
-    fuel expenses, depreciation expenses, and total expenses based on work day data.
+    fuel expenses, depreciation expenses,
+    and total expenses based on work day data.
     """
 
     def test_create_work_day(self):
@@ -43,10 +45,14 @@ class TestManagerWorkDay(TransactionCase):
             "odometer_end": 150.0
         })
 
-        # Instead of directly accessing protected methods, use public methods if possible
-        work_day._compute_fuel_expenses()  # Internal method for fuel expense calculation
-        work_day._compute_depreciation_expenses()  # Internal method for depreciation calculation
-        work_day._compute_total_expenses()  # Internal method for total expenses calculation
+        # Instead of directly accessing protected methods,
+        # use public methods if possible
+        work_day._compute_fuel_expenses()
+        # Internal method for fuel expense calculation
+        work_day._compute_depreciation_expenses()
+        # Internal method for depreciation calculation
+        work_day._compute_total_expenses()
+        # Internal method for total expenses calculation
 
         # Check that total expenses are greater than 0
         self.assertGreater(work_day.total_expenses, 0.0)

@@ -2,9 +2,10 @@ from odoo.tests import TransactionCase
 
 """
 This model defines the test cases for the `manager.daily.report` model.
-It includes tests for creating daily reports, computing the balance, and 
-verifying the correct calculations for income, expenses, and balance.
+It includes tests for creating daily reports, computing the balance,
+and verifying the correct calculations for income, expenses, and balance.
 """
+
 
 class TestManagerDailyReport(TransactionCase):
     """

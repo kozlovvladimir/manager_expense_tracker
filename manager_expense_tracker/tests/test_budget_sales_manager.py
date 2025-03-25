@@ -6,6 +6,7 @@ It includes tests for creating a new Budget Sales Manager and computing
 the name based on the manager_id.
 """
 
+
 class TestBudgetSalesManager(TransactionCase):
     """
     This class tests the functionality of the 'budget.sales.manager' model.

@@ -11,6 +11,7 @@ generating reports based on fuel prices,
 and ensuring data integrity for fuel-related transactions.
 """
 
+
 class FuelPrices(models.Model):
     """
     This class defines the fuel prices

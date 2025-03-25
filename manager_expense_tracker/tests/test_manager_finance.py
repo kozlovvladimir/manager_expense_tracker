@@ -3,14 +3,18 @@ from odoo.tests import TransactionCase
 """
 This module contains test cases for the 'manager.finance' model.
 It includes tests for creating finance records, computing the balance,
-and ensuring the correct calculation of income and expenses for budget sales managers.
+and ensuring the correct calculation of income and expenses
+for budget sales managers.
 """
+
 
 class TestManagerFinance(TransactionCase):
     """
     This class tests the functionality of the 'manager.finance' model.
-    It includes tests for creating finance records, checking the balance computation
-    based on income and expenses, and ensuring that the calculations are correct.
+    It includes tests for creating finance records,
+    checking the balance computation
+    based on income and expenses,
+    and ensuring that the calculations are correct.
     """
 
     def test_create_manager_finance(self):

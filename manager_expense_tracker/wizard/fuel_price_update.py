@@ -3,8 +3,7 @@ This module defines the wizard for mass updating fuel prices, fuel consumption,
 and depreciation rates for selected managers within a specified date range.
 """
 
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+from odoo import models, fields
 
 
 class FuelPriceUpdateWizard(models.TransientModel):

@@ -1,14 +1,17 @@
 # """
 # This module tracks workdays, mileage, and financial transactions
 # of budget sales managers.
-# It integrates with Odoo's HR, accounting, fleet, and sales modules to provide a complete
-# solution for managing sales budgets, including work day tracking, fuel prices, financial records,
+# It integrates with Odoo's HR, accounting, fleet,
+# and sales modules to provide a complete
+# solution for managing sales budgets, including work day tracking,
+# fuel prices, financial records,
 # and daily reports.
 # """
 
 {
     "name": "Budget Sales Tracking",
-    "summary": "Tracking work days, mileage, and finances of budget sales managers",
+    "summary": "Tracking work days, mileage,"
+               "and finances of budget sales managers",
     "description": "This module allows tracking workdays, mileage, "
                    "and financial transactions of budget sales managers.",
     "author": "Your Name",

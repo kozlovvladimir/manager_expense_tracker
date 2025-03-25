@@ -1,10 +1,14 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 
 """
-This module defines the ManagerFinance model, which tracks the financial data for a manager.
-It includes fields for recording income, manually entered expenses, automatically calculated
-expenses, and balance for a specific manager on a given date. It also manages the approval
-status of the financial data and provides functionality to sync the financial records with
+This module defines the ManagerFinance model,
+which tracks the financial data for a manager.
+It includes fields for recording income, manually entered expenses,
+automatically calculated
+expenses, and balance for a specific manager on a given date.
+It also manages the approval
+status of the financial data
+and provides functionality to sync the financial records with
 daily reports.
 
 Fields:
@@ -12,11 +16,16 @@ Fields:
 - date: The date of the financial data record.
 - income: The income of the manager on the specified date.
 - expenses_other: The manually entered other expenses for the manager.
-- expenses_auto: The automatically calculated expenses based on fuel consumption and depreciation.
-- balance: The balance for the manager, calculated as income minus the sum of other expenses and automatic expenses.
-- approved: A boolean field indicating whether the financial data has been approved.
-- fuel_price_id: A reference to the most recent fuel price record for the manager and date.
+- expenses_auto: The automatically calculated expenses based
+on fuel consumption and depreciation.
+- balance: The balance for the manager, calculated as income minus the sum
+of other expenses and automatic expenses.
+- approved: A boolean field indicating whether
+the financial data has been approved.
+- fuel_price_id: A reference to the most recent fuel price record
+for the manager and date.
 """
+
 
 class ManagerFinance(models.Model):
     """
@@ -69,7 +78,8 @@ class ManagerFinance(models.Model):
         required=True
     )
 
-    # Computed field for automatic expenses based on fuel price and consumption
+    # Computed field for automatic expenses based
+    # on fuel price and consumption
     expenses_auto = fields.Float(
         string="Auto Expenses",
         compute="_compute_auto_expenses",
@@ -104,7 +114,8 @@ class ManagerFinance(models.Model):
         """
         for record in self:
             record.balance = record.income - (
-                        record.expenses_other + record.expenses_auto)
+                    record.expenses_other + record.expenses_auto
+            )
 
     @api.depends(
         "manager_id",

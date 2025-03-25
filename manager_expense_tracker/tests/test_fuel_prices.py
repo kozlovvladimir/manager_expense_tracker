@@ -9,6 +9,7 @@ on fuel prices for the same manager and date,
 and verifying fuel price calculations.
 """
 
+
 class TestFuelPrices(TransactionCase):
     """
     This class tests the functionality of the 'fuel.prices' model.
@@ -34,7 +35,8 @@ class TestFuelPrices(TransactionCase):
         self.assertEqual(fuel_price.consumption, 8.0)
 
     def test_unique_constraint(self):
-        """Test that fuel price records cannot be duplicated for the same manager and date"""
+        """Test that fuel price records cannot be duplicated
+        for the same manager and date"""
         manager = self.env["budget.sales.manager"].create({
             "manager_id": self.env.user.id
         })

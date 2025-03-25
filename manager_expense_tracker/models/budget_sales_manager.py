@@ -13,11 +13,13 @@ The model includes:
 - A computed 'name' field, derived from the manager's associated user's name.
 - A 'manager_id' field that links the budget sales manager to a user (manager).
 - Fields for storing the manager's phone number and integration code with 1C.
-- Relationships to store fuel prices and financial records linked to the manager.
+- Relationships to store fuel prices
+and financial records linked to the manager.
 
 The model is essential for tracking budget sales managers' activities,
 financials, and fuel pricing.
 """
+
 
 class BudgetSalesManager(models.Model):
     """
@@ -88,7 +90,8 @@ class BudgetSalesManager(models.Model):
     @api.depends("manager_id")
     def _compute_name(self):
         """
-        Automatically fills in the manager's name based on the related manager.
+        Automatically fills in the manager's name based
+        on the related manager.
         This method ensures that the 'name' field
         is updated whenever the manager
         associated with the sales manager changes.

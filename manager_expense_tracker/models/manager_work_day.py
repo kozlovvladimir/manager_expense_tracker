@@ -1,11 +1,15 @@
-from odoo import models, fields, api, _
+from odoo import models, fields, api
 
 """
-This module defines the ManagerWorkDay model, which tracks the workday data for a manager.
-It records odometer readings at the start and end of the day, calculates the distance traveled,
-fuel expenses, and depreciation costs. The model uses the manager's fuel price data to compute
+This module defines the ManagerWorkDay model,
+which tracks the workday data for a manager.
+It records odometer readings at the start and end of the day,
+calculates the distance traveled,
+fuel expenses, and depreciation costs.
+The model uses the manager's fuel price data to compute
 fuel and depreciation expenses based on the workday's data.
 """
+
 
 class ManagerWorkDay(models.Model):
     """

@@ -1,12 +1,14 @@
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api
 
 """
-This module defines the ManagerDailyReport model, which tracks daily reports for managers.
+This module defines the ManagerDailyReport model,
+which tracks daily reports for managers.
 It records daily activities such as fuel usage, expenses, income, and balance.
-It also manages the relationship with fuel prices, depreciation, and syncs financial data
+It also manages the relationship with fuel prices, depreciation,
+and syncs financial data
 with other models like work day and finance.
 """
+
 
 class ManagerDailyReport(models.Model):
     """
@@ -42,7 +44,8 @@ class ManagerDailyReport(models.Model):
     - expenses_manual: Other manually entered expenses.
     - total_expenses: The total computed expenses, including fuel,
     depreciation, and manual expenses.
-    - balance: The balance for the day, computed as income minus total expenses.
+    - balance: The balance for the day,
+    computed as income minus total expenses.
     - fuel_expense_id: A link to the created fuel expense record.
     """
     _name = "manager.daily.report"
@@ -158,8 +161,9 @@ class ManagerDailyReport(models.Model):
         Ensures that distance is always a positive value.
         """
         for record in self:
-            record.distance = max(record.odometer_end - record.odometer_start,
-                                  0)
+            record.distance = max(
+                record.odometer_end - record.odometer_start, 0
+            )
 
     @api.depends(
         "manager_id", "date",
@@ -210,9 +214,14 @@ class ManagerDailyReport(models.Model):
         """
         for record in self:
             record.fuel_used = (
-                                           record.distance * record.fuel_consumption_rate) / 100
-            record.fuel_cost = record.fuel_used * record.fuel_price_per_liter
-            record.depreciation_cost = record.distance * record.depreciation_rate
+                    (record.distance * record.fuel_consumption_rate) / 100
+            )
+            record.fuel_cost = (
+                    record.fuel_used * record.fuel_price_per_liter
+            )
+            record.depreciation_cost = (
+                    record.distance * record.depreciation_rate
+            )
 
     @api.depends("fuel_cost", "depreciation_cost", "expenses_manual")
     def _compute_total_expenses(self):
@@ -222,9 +231,9 @@ class ManagerDailyReport(models.Model):
         """
         for record in self:
             record.total_expenses = (
-                    record.fuel_cost +
-                    record.depreciation_cost +
-                    record.expenses_manual
+                    record.fuel_cost
+                    + record.depreciation_cost
+                    + record.expenses_manual
             )
 
     @api.depends("income", "total_expenses")
