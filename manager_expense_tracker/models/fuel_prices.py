@@ -2,8 +2,31 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 from datetime import timedelta
 
+"""
+This module defines the FuelPrices model, which tracks the fuel price history,
+fuel consumption rates,
+and depreciation costs for a specific manager.
+It provides functionality for updating fuel prices,
+generating reports based on fuel prices,
+and ensuring data integrity for fuel-related transactions.
+"""
 
 class FuelPrices(models.Model):
+    """
+    This class defines the fuel prices
+    and consumption rates for a specific manager.
+    It tracks fuel price history, consumption, depreciation costs,
+    and provides functionality
+    for updating fuel prices and generating reports based on these prices.
+
+    Fields:
+    - manager_id: The manager associated with the fuel price record.
+    - date: The date the fuel price was set.
+    - fuel_price: The price of fuel per liter on the specified date.
+    - consumption: The fuel consumption rate per 100 km.
+    - depreciation: The depreciation cost per kilometer.
+    - active: Indicates if this fuel price entry is currently active.
+    """
     _name = "fuel.prices"
     _description = "Fuel Prices and Consumption Rates"
     _order = "date desc, id desc"
@@ -16,7 +39,6 @@ class FuelPrices(models.Model):
     )
 
     date = fields.Date(
-        string="Date",
         required=True,
         help="Date when the fuel price was set."
     )
@@ -55,11 +77,39 @@ class FuelPrices(models.Model):
 
     @api.model
     def _generate_dates(self, start_date, end_date):
-        if start_date > end_date:
-            raise ValidationError(_("Start date cannot be later than end date."))
-        return [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range((end_date - start_date).days + 1)]
+        """
+        Generates a list of dates between the start and end date, inclusive.
 
-    def update_fuel_price(self, new_fuel_price, new_consumption, new_depreciation):
+        Args:
+            start_date (datetime.date): The start date.
+            end_date (datetime.date): The end date.
+
+        Returns:
+            list: A list of dates between the start
+            and end date in 'YYYY-MM-DD' format.
+
+        Raises:
+            ValidationError: If the start date is later than the end date.
+        """
+        if start_date > end_date:
+            raise ValidationError(
+                _("Start date cannot be later than end date."))
+        return [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in
+                range((end_date - start_date).days + 1)]
+
+    def update_fuel_price(self, new_fuel_price, new_consumption,
+                          new_depreciation):
+        """
+        Updates the fuel price, consumption,
+        and depreciation values for the record
+        and logs the changes.
+        This method allows updating existing fuel price details.
+
+        Args:
+            new_fuel_price (float): The new fuel price.
+            new_consumption (float): The new fuel consumption rate.
+            new_depreciation (float): The new depreciation cost.
+        """
         for record in self:
             old_values = {
                 "fuel_price": record.fuel_price,
@@ -84,6 +134,14 @@ class FuelPrices(models.Model):
             )
 
     def open_update_wizard(self):
+        """
+        Opens the fuel price update wizard for a single record,
+        allowing managers to update
+        fuel prices through a user-friendly interface.
+
+        Returns:
+            dict: The action dictionary to open the wizard form.
+        """
         return {
             "type": "ir.actions.act_window",
             "name": "Update Fuel Price",
@@ -100,6 +158,14 @@ class FuelPrices(models.Model):
         }
 
     def open_mass_update_wizard(self):
+        """
+        Opens the mass fuel price update wizard for multiple records,
+        allowing bulk updates
+        of fuel prices for multiple managers at once.
+
+        Returns:
+            dict: The action dictionary to open the mass update wizard form.
+        """
         return {
             "type": "ir.actions.act_window",
             "name": "Mass Update Fuel Prices",
@@ -112,6 +178,18 @@ class FuelPrices(models.Model):
         }
 
     def write(self, vals):
+        """
+        Overrides the write method to update related reports when fuel price
+        records are modified.
+        This ensures that related daily reports are recalculated based
+        on the updated fuel price.
+
+        Args:
+            vals (dict): The field values to be updated.
+
+        Returns:
+            bool: The result of the write operation.
+        """
         res = super().write(vals)
         for record in self:
             reports = self.env['manager.daily.report'].search([
@@ -127,6 +205,18 @@ class FuelPrices(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        """
+        Overrides the create method to update related reports
+        after creating new fuel price records.
+        This ensures that related reports are recalculated immediately
+        after the creation of new records.
+
+        Args:
+            vals_list (list): The list of values for the new records.
+
+        Returns:
+            records: The created records.
+        """
         records = super().create(vals_list)
         for record in records:
             reports = self.env['manager.daily.report'].search([
