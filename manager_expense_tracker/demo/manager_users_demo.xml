@@ -1,26 +1,24 @@
 <odoo>
-    <data noupdate="1">
 
-        <record id="manager_1" model="res.users">
-            <field name="name">Менеджер 1</field>
-            <field name="login">manager1</field>
-            <field name="password">password1</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
-        </record>
+    <record id="manager_1" model="res.users">
+        <field name="name">Менеджер 1</field>
+        <field name="login">manager1</field>
+        <field name="password">password1</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+    </record>
 
-        <record id="manager_2" model="res.users">
-            <field name="name">Менеджер 2</field>
-            <field name="login">manager2</field>
-            <field name="password">password2</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
-        </record>
+    <record id="manager_2" model="res.users">
+        <field name="name">Менеджер 2</field>
+        <field name="login">manager2</field>
+        <field name="password">password2</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+    </record>
 
-        <record id="manager_3" model="res.users">
-            <field name="name">Менеджер 3</field>
-            <field name="login">manager3</field>
-            <field name="password">password3</field>
-            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
-        </record>
+    <record id="manager_3" model="res.users">
+        <field name="name">Менеджер 3</field>
+        <field name="login">manager3</field>
+        <field name="password">password3</field>
+        <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+    </record>
 
-    </data>
 </odoo>

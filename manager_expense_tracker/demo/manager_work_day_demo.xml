@@ -1,28 +1,27 @@
 <odoo>
-    <data noupdate="1">
 
-        <record id="work_day_1" model="manager.work.day">
-            <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
-            <field name="date">2025-03-01</field>
-            <field name="odometer_start">1000.0</field>
-            <field name="odometer_end">1150.0</field>
-            <field name="is_holiday">False</field>
-        </record>
+    <record id="work_day_1" model="manager.work.day">
+        <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
+        <field name="date">2025-03-01</field>
+        <field name="odometer_start">1000.0</field>
+        <field name="odometer_end">1150.0</field>
+        <field name="is_holiday">False</field>
+    </record>
 
-        <record id="work_day_2" model="manager.work.day">
-            <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
-            <field name="date">2025-03-01</field>
-            <field name="odometer_start">500.0</field>
-            <field name="odometer_end">620.0</field>
-            <field name="is_holiday">False</field>
-        </record>
+    <record id="work_day_2" model="manager.work.day">
+        <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
+        <field name="date">2025-03-01</field>
+        <field name="odometer_start">500.0</field>
+        <field name="odometer_end">620.0</field>
+        <field name="is_holiday">False</field>
+    </record>
 
-        <record id="work_day_3" model="manager.work.day">
-            <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
-            <field name="date">2025-03-01</field>
-            <field name="odometer_start">2000.0</field>
-            <field name="odometer_end">2180.0</field>
-            <field name="is_holiday">False</field>
-        </record>
-    </data>
+    <record id="work_day_3" model="manager.work.day">
+        <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
+        <field name="date">2025-03-01</field>
+        <field name="odometer_start">2000.0</field>
+        <field name="odometer_end">2180.0</field>
+        <field name="is_holiday">False</field>
+    </record>
+
 </odoo>
