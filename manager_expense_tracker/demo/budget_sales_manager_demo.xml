@@ -1,26 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
 
-        <record id="manager_1" model="budget.sales.manager">
-            <field name="manager_id" ref="base.user_demo"/>
-            <field name="phone">+380671234567</field>
-            <field name="code_1c">MGR001</field>
+        <record id="fuel_price_1" model="fuel.prices">
+            <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">56.50</field>
+            <field name="consumption">10.5</field>
+            <field name="depreciation">1.25</field>
             <field name="active">True</field>
         </record>
 
-
-        <record id="manager_2" model="budget.sales.manager">
-            <field name="manager_id" ref="base.user_admin"/>
-            <field name="phone">+380681234567</field>
-            <field name="code_1c">MGR002</field>
+        <record id="fuel_price_2" model="fuel.prices">
+            <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">55.80</field>
+            <field name="consumption">11.0</field>
+            <field name="depreciation">1.20</field>
             <field name="active">True</field>
         </record>
 
-
-        <record id="manager_3" model="budget.sales.manager">
-            <field name="manager_id" ref="base.user_root"/>
-            <field name="phone">+380691234567</field>
-            <field name="code_1c">MGR003</field>
+        <record id="fuel_price_3" model="fuel.prices">
+            <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
+            <field name="date">2025-03-01</field>
+            <field name="fuel_price">57.20</field>
+            <field name="consumption">9.8</field>
+            <field name="depreciation">1.30</field>
             <field name="active">True</field>
         </record>
     </data>

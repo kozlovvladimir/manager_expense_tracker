@@ -31,6 +31,7 @@
         "views/menu_views.xml",
     ],
     "demo": [
+        "demo/manager_users_demo.xml",
         "demo/budget_sales_manager_demo.xml",
         "demo/fuel_prices_demo.xml",
         "demo/manager_finance_demo.xml",

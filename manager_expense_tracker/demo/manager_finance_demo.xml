@@ -2,25 +2,23 @@
     <data noupdate="0">
 
         <record id="finance_1" model="manager.finance">
-            <field name="manager_id" ref="budget_sales_manager_demo.manager_1"/>
+            <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
             <field name="date">2025-03-01</field>
             <field name="income">15000.00</field>
             <field name="expenses_other">2000.00</field>
             <field name="approved">False</field>
         </record>
 
-
         <record id="finance_2" model="manager.finance">
-            <field name="manager_id" ref="budget_sales_manager_demo.manager_2"/>
+            <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
             <field name="date">2025-03-01</field>
             <field name="income">12000.00</field>
             <field name="expenses_other">1500.00</field>
             <field name="approved">False</field>
         </record>
 
-
         <record id="finance_3" model="manager.finance">
-            <field name="manager_id" ref="budget_sales_manager_demo.manager_3"/>
+            <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
             <field name="date">2025-03-01</field>
             <field name="income">17000.00</field>
             <field name="expenses_other">1800.00</field>
