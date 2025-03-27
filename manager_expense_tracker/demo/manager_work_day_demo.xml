@@ -1,5 +1,5 @@
 <odoo>
-    <data noupdate="0">
+    <data noupdate="1">
 
         <record id="work_day_1" model="manager.work.day">
             <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
