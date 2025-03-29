@@ -9,7 +9,7 @@ and financial records. It provides fields to store essential information
 about the manager and their
 associated financial and fuel data.
 
-The model includes:
+The model includes:          
 - A computed 'name' field, derived from the manager's associated user's name.
 - A 'manager_id' field that links the budget sales manager to a user (manager).
 - Fields for storing the manager's phone number and integration code with 1C.
