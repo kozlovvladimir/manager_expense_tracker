@@ -1,24 +1,36 @@
 <odoo>
-
+    <!-- Users -->
     <record id="manager_1" model="res.users">
-        <field name="name">Менеджер 1</field>
+        <field name="name">Manager 1</field>
         <field name="login">manager1</field>
         <field name="password">password1</field>
         <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <record id="manager_2" model="res.users">
-        <field name="name">Менеджер 2</field>
+        <field name="name">Manager 2</field>
         <field name="login">manager2</field>
         <field name="password">password2</field>
         <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <record id="manager_3" model="res.users">
-        <field name="name">Менеджер 3</field>
+        <field name="name">Manager 3</field>
         <field name="login">manager3</field>
         <field name="password">password3</field>
         <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
+    <!-- Budget Sales Managers -->
+    <record id="manager_1_bsm" model="budget.sales.manager">
+        <field name="manager_id" ref="manager_1"/>
+    </record>
+
+    <record id="manager_2_bsm" model="budget.sales.manager">
+        <field name="manager_id" ref="manager_2"/>
+    </record>
+
+    <record id="manager_3_bsm" model="budget.sales.manager">
+        <field name="manager_id" ref="manager_3"/>
+    </record>
 </odoo>

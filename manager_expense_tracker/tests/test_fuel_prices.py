@@ -1,15 +1,15 @@
+"""Test cases for the fuel.prices model.
+
+Covers record creation, uniqueness constraints for manager/date,
+and validation of price, consumption, and depreciation.
+"""
+
 from odoo.tests import TransactionCase
+from odoo.tests.common import mute_logger
 from odoo.exceptions import ValidationError
 
-"""
-This module contains test cases for the 'fuel.prices' model.
-It includes tests for creating fuel price records,
-ensuring the unique constraint
-on fuel prices for the same manager and date,
-and verifying fuel price calculations.
-"""
 
-
+@mute_logger('odoo.sql_db')
 class TestFuelPrices(TransactionCase):
     """
     This class tests the functionality of the 'fuel.prices' model.

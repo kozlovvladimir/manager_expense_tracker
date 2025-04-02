@@ -1,7 +1,7 @@
 <odoo>
 
     <record id="fuel_price_1" model="fuel.prices">
-        <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
+        <field name="manager_id" ref="manager_expense_tracker.manager_1_bsm"/>
         <field name="date">2025-03-01</field>
         <field name="fuel_price">56.50</field>
         <field name="consumption">10.5</field>
@@ -10,7 +10,7 @@
     </record>
 
     <record id="fuel_price_2" model="fuel.prices">
-        <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
+        <field name="manager_id" ref="manager_expense_tracker.manager_2_bsm"/>
         <field name="date">2025-03-01</field>
         <field name="fuel_price">55.80</field>
         <field name="consumption">11.0</field>
@@ -19,7 +19,7 @@
     </record>
 
     <record id="fuel_price_3" model="fuel.prices">
-        <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
+        <field name="manager_id" ref="manager_expense_tracker.manager_3_bsm"/>
         <field name="date">2025-03-01</field>
         <field name="fuel_price">57.20</field>
         <field name="consumption">9.8</field>

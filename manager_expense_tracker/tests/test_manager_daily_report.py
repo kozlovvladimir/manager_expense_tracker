@@ -1,10 +1,10 @@
-from odoo.tests import TransactionCase
+"""Test cases for the manager.daily.report model.
 
+Covers creation of daily reports and balance computation
+based on income and manual expenses.
 """
-This model defines the test cases for the `manager.daily.report` model.
-It includes tests for creating daily reports, computing the balance,
-and verifying the correct calculations for income, expenses, and balance.
-"""
+
+from odoo.tests import TransactionCase
 
 
 class TestManagerDailyReport(TransactionCase):
@@ -19,11 +19,15 @@ class TestManagerDailyReport(TransactionCase):
         manager = self.env["budget.sales.manager"].create({
             "manager_id": self.env.user.id
         })
+        employee = self.env["hr.employee"].create({
+            "name": "Test Employee"
+        })
         report = self.env["manager.daily.report"].create({
             "manager_id": manager.id,
             "date": "2025-03-01",
             "income": 100.0,
-            "expenses_manual": 20.0
+            "expenses_manual": 20.0,
+            "employee_id": employee.id,
         })
         self.assertEqual(report.income, 100.0)
         self.assertEqual(report.expenses_manual, 20.0)
@@ -33,10 +37,14 @@ class TestManagerDailyReport(TransactionCase):
         manager = self.env["budget.sales.manager"].create({
             "manager_id": self.env.user.id
         })
+        employee = self.env["hr.employee"].create({
+            "name": "Test Employee"
+        })
         report = self.env["manager.daily.report"].create({
             "manager_id": manager.id,
             "date": "2025-03-01",
             "income": 100.0,
-            "expenses_manual": 20.0
+            "expenses_manual": 20.0,
+            "employee_id": employee.id,
         })
         self.assertEqual(report.balance, 80.0)

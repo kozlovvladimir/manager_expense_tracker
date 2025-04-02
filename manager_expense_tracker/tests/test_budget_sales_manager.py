@@ -1,10 +1,10 @@
-from odoo.tests import TransactionCase
+"""Test cases for the budget.sales.manager model.
 
+Covers creation of sales managers and automatic name computation
+based on manager_id.
 """
-This module contains test cases for the 'budget.sales.manager' model.
-It includes tests for creating a new Budget Sales Manager and computing
-the name based on the manager_id.
-"""
+
+from odoo.tests import TransactionCase
 
 
 class TestBudgetSalesManager(TransactionCase):

@@ -1,33 +1,39 @@
 <odoo>
+    <data noupdate="1">
 
-    <record id="daily_report_1" model="manager.daily.report">
-        <field name="name">Daily Report 2025-03-01 - Manager 1</field>
-        <field name="manager_id" ref="manager_expense_tracker.manager_1"/>
-        <field name="date">2025-03-01</field>
-        <field name="odometer_start">1000.0</field>
-        <field name="odometer_end">1150.0</field>
-        <field name="income">15000.00</field>
-        <field name="expenses_manual">2000.00</field>
-    </record>
+        <record id="daily_report_1" model="manager.daily.report">
+            <field name="name">Daily Report 2025-03-01 - Manager 1</field>
+            <field name="manager_id" ref="manager_expense_tracker.manager_1_bsm"/>
+            <field name="date">2025-03-01</field>
+            <field name="odometer_start">1000.0</field>
+            <field name="odometer_end">1150.0</field>
+            <field name="income">15000.00</field>
+            <field name="expenses_manual">2000.00</field>
+            <field name="employee_id" ref="hr.employee_admin"/>
+        </record>
 
-    <record id="daily_report_2" model="manager.daily.report">
-        <field name="name">Daily Report 2025-03-01 - Manager 2</field>
-        <field name="manager_id" ref="manager_expense_tracker.manager_2"/>
-        <field name="date">2025-03-01</field>
-        <field name="odometer_start">500.0</field>
-        <field name="odometer_end">620.0</field>
-        <field name="income">12000.00</field>
-        <field name="expenses_manual">1500.00</field>
-    </record>
+        <record id="daily_report_2" model="manager.daily.report">
+            <field name="name">Daily Report 2025-03-01 - Manager 2</field>
+            <field name="manager_id" ref="manager_expense_tracker.manager_2_bsm"/>
+            <field name="date">2025-03-01</field>
+            <field name="odometer_start">500.0</field>
+            <field name="odometer_end">620.0</field>
+            <field name="income">12000.00</field>
+            <field name="expenses_manual">1500.00</field>
+            <field name="employee_id" ref="hr.employee_admin"/>
+            <field name="description">Confidential client visit – details are secret</field>
+        </record>
 
-    <record id="daily_report_3" model="manager.daily.report">
-        <field name="name">Daily Report 2025-03-01 - Manager 3</field>
-        <field name="manager_id" ref="manager_expense_tracker.manager_3"/>
-        <field name="date">2025-03-01</field>
-        <field name="odometer_start">2000.0</field>
-        <field name="odometer_end">2180.0</field>
-        <field name="income">17000.00</field>
-        <field name="expenses_manual">1800.00</field>
-    </record>
+        <record id="daily_report_3" model="manager.daily.report">
+            <field name="name">Daily Report 2025-03-01 - Manager 3</field>
+            <field name="manager_id" ref="manager_expense_tracker.manager_3_bsm"/>
+            <field name="date">2025-03-01</field>
+            <field name="odometer_start">2000.0</field>
+            <field name="odometer_end">2180.0</field>
+            <field name="income">17000.00</field>
+            <field name="expenses_manual">1800.00</field>
+            <field name="employee_id" ref="hr.employee_admin"/>
+        </record>
 
+    </data>
 </odoo>
