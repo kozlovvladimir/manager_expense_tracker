@@ -184,22 +184,24 @@ class ManagerDailyReport(models.Model):
                 work_day.odometer_end = self.odometer_end
 
     def create_fuel_expense(self):
-        """Create a draft fuel expense record if fuel cost is greater than zero."""
+        """creates a draft fuel consumption if consumption > 0."""
         for record in self:
             if record.fuel_cost > 0:
-                product = self.env.ref(
-                    "hr_expense.product_product_fuel",
-                    raise_if_not_found=False
-                )
+                product = self.env.ref("hr_expense.product_product_fuel",
+                                       raise_if_not_found=False)
+                if not product:
+                    continue
+
                 expense_vals = {
                     "name": f"Fuel Expense ({record.date})",
+                    "product_id": product.id,
                     "employee_id": record.employee_id.id,
-                    "amount": record.fuel_cost,
+                    "quantity": record.fuel_used,
+                    "price_total": record.fuel_cost,
                     "date": record.date,
-                    "state": "draft",
+                    "payment_mode": "own_account",
                 }
-                if product:
-                    expense_vals["product_id"] = product.id
+
                 expense = self.env["hr.expense"].create(expense_vals)
                 record.fuel_expense_id = expense.id
 
