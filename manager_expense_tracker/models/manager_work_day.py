@@ -127,15 +127,21 @@ class ManagerWorkDay(models.Model):
         return res
 
     def _sync_with_daily_report(self):
-        """Sync odometer readings to the manager.daily.report record
-        of the same date and manager."""
+        """Sync odometer readings to manager.daily.report or create one."""
         for record in self:
-            report = self.env["manager.daily.report"].search([
+            daily_report = self.env["manager.daily.report"].search([
                 ("manager_id", "=", record.manager_id.id),
                 ("date", "=", record.date)
             ], limit=1)
-            if report:
-                report.write({
-                    "odometer_start": record.odometer_start,
-                    "odometer_end": record.odometer_end,
-                })
+
+            vals = {
+                "manager_id": record.manager_id.id,
+                "date": record.date,
+                "odometer_start": record.odometer_start,
+                "odometer_end": record.odometer_end,
+            }
+
+            if daily_report:
+                daily_report.write(vals)
+            else:
+                self.env["manager.daily.report"].create(vals)

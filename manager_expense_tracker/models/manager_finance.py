@@ -134,3 +134,20 @@ class ManagerFinance(models.Model):
                     "balance": record.balance,
                 })
         return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for record in records:
+            daily = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if not daily:
+                self.env["manager.daily.report"].create({
+                    "manager_id": record.manager_id.id,
+                    "date": record.date,
+                    "income": record.income,
+                    "expenses_manual": record.expenses_other,
+                })
+        return records
