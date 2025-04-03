@@ -33,4 +33,20 @@
     <record id="manager_3_bsm" model="budget.sales.manager">
         <field name="manager_id" ref="manager_3"/>
     </record>
+
+    <!-- HR Employees are related to res.users -->
+    <record id="employee_manager_1" model="hr.employee">
+        <field name="name">Employee for Manager 1</field>
+        <field name="user_id" ref="manager_1"/>
+    </record>
+
+    <record id="employee_manager_2" model="hr.employee">
+        <field name="name">Employee for Manager 2</field>
+        <field name="user_id" ref="manager_2"/>
+    </record>
+
+    <record id="employee_manager_3" model="hr.employee">
+        <field name="name">Employee for Manager 3</field>
+        <field name="user_id" ref="manager_3"/>
+    </record>
 </odoo>

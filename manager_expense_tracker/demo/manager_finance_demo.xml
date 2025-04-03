@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="finance_1" model="manager.finance">
         <field name="manager_id" ref="manager_expense_tracker.manager_1_bsm"/>
         <field name="date">2025-03-01</field>
@@ -23,5 +22,4 @@
         <field name="expenses_other">1800.00</field>
         <field name="approved">True</field>
     </record>
-
 </odoo>

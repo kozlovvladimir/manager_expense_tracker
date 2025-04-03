@@ -9,7 +9,7 @@
             <field name="odometer_end">1150.0</field>
             <field name="income">15000.00</field>
             <field name="expenses_manual">2000.00</field>
-            <field name="employee_id" ref="hr.employee_admin"/>
+            <field name="employee_id" ref="manager_expense_tracker.employee_manager_1"/>
         </record>
 
         <record id="daily_report_2" model="manager.daily.report">
@@ -20,7 +20,7 @@
             <field name="odometer_end">620.0</field>
             <field name="income">12000.00</field>
             <field name="expenses_manual">1500.00</field>
-            <field name="employee_id" ref="hr.employee_admin"/>
+            <field name="employee_id" ref="manager_expense_tracker.employee_manager_2"/>
             <field name="description">Confidential client visit – details are secret</field>
         </record>
 
@@ -32,7 +32,7 @@
             <field name="odometer_end">2180.0</field>
             <field name="income">17000.00</field>
             <field name="expenses_manual">1800.00</field>
-            <field name="employee_id" ref="hr.employee_admin"/>
+            <field name="employee_id" ref="manager_expense_tracker.employee_manager_3"/>
         </record>
 
     </data>
