@@ -11,6 +11,7 @@
                         <group>
                             <field name="manager_id"/>
                             <field name="date"/>
+                            <field name="initial_balance" readonly="1"/>
                             <field name="income"/>
                             <field name="expenses_other"/>
                             <field name="expenses_auto"/>
@@ -29,6 +30,7 @@
                 <list string="Manager Finances">
                     <field name="manager_id"/>
                     <field name="date"/>
+                    <field name="initial_balance" readonly="1"/>
                     <field name="income"/>
                     <field name="expenses_other"/>
                     <field name="expenses_auto"/>
@@ -36,7 +38,6 @@
                 </list>
             </field>
         </record>
-
 
         <record id="action_manager_finance" model="ir.actions.act_window">
             <field name="name">Manager Finance</field>

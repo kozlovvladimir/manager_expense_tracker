@@ -59,6 +59,9 @@ class ManagerDailyReport(models.Model):
     expenses_manual = fields.Float(string="Other Expenses", default=0.0)
     total_expenses = fields.Float(compute="_compute_total_expenses",
                                   store=True)
+
+    initial_balance = fields.Float(string="Initial Balance", readonly=True, store=True)
+
     balance = fields.Float(compute="_compute_balance", store=True)
     fuel_expense_id = fields.Many2one(
         "hr.expense", string="Fuel Expense"
@@ -112,7 +115,7 @@ class ManagerDailyReport(models.Model):
     def _compute_fuel_expenses(self):
         for rec in self:
             rec.fuel_used = (
-                    rec.distance * rec.fuel_consumption_rate / 100
+                rec.distance * rec.fuel_consumption_rate / 100
             )
             rec.fuel_cost = rec.fuel_used * rec.fuel_price_per_liter
             rec.depreciation_cost = rec.distance * rec.depreciation_rate
@@ -121,13 +124,13 @@ class ManagerDailyReport(models.Model):
     def _compute_total_expenses(self):
         for rec in self:
             rec.total_expenses = (
-                    rec.fuel_cost + rec.depreciation_cost + rec.expenses_manual
+                rec.fuel_cost + rec.depreciation_cost + rec.expenses_manual
             )
 
-    @api.depends("income", "total_expenses")
+    @api.depends("initial_balance", "income", "total_expenses")
     def _compute_balance(self):
         for record in self:
-            record.balance = record.income - record.total_expenses
+            record.balance = record.initial_balance + record.income - record.total_expenses
 
     def _find_finance_or_work_day(self, model):
         return self.env[model].search([
@@ -138,6 +141,19 @@ class ManagerDailyReport(models.Model):
     @api.onchange("manager_id", "date")
     def _onchange_manager_or_date(self):
         self._compute_fuel_price()
+        self._onchange_initial_balance()  # додано виклик
+
+    @api.onchange("manager_id", "date")
+    def _onchange_initial_balance(self):
+        """
+        Automatic filling of initial_balance when selecting manager and date.
+        """
+        if self.manager_id and self.date:
+            previous = self.search([
+                ("manager_id", "=", self.manager_id.id),
+                ("date", "<", self.date)
+            ], order="date desc", limit=1)
+            self.initial_balance = previous.balance if previous else 0.0
 
     @api.onchange(
         "fuel_price_per_liter", "fuel_consumption_rate",
@@ -208,8 +224,8 @@ class ManagerDailyReport(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         """
-        Override the create method to auto-assign employee_id
-        based on manager's user and create a fuel expense if needed.
+        Override the create method to auto-assign employee_id,
+        set initial_balance, and create a fuel expense if needed.
         """
         for vals in vals_list:
             if not vals.get("employee_id") and vals.get("manager_id"):
@@ -221,8 +237,18 @@ class ManagerDailyReport(models.Model):
                 )], limit=1)
                 if employee:
                     vals["employee_id"] = employee.id
+
         records = super().create(vals_list)
-        records.create_fuel_expense()
+
+        for record in records:
+            prev = self.search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "<", record.date)
+            ], order="date desc", limit=1)
+
+            record.initial_balance = prev.balance if prev else 0.0
+            record.create_fuel_expense()
+
         return records
 
     def action_print_report(self):

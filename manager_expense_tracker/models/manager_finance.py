@@ -1,8 +1,3 @@
-"""
-ManagerFinance model tracks financial data for sales managers,
-including income, expenses, and balance.
-"""
-
 from odoo import models, fields, api
 
 
@@ -37,6 +32,12 @@ class ManagerFinance(models.Model):
         store=True
     )
 
+    initial_balance = fields.Float(
+        string="Initial Balance",
+        store=True,
+        readonly=True
+    )
+
     balance = fields.Float(
         string="Balance",
         compute="_compute_balance",
@@ -52,12 +53,16 @@ class ManagerFinance(models.Model):
         store=True
     )
 
-    @api.depends("income", "expenses_other", "expenses_auto")
+    @api.depends(
+        "income", "expenses_other", "expenses_auto", "initial_balance"
+    )
     def _compute_balance(self):
-        """Calculate balance = income - (manual + auto expenses)."""
+        """Calculate balance = initial + income - (manual + auto expenses)."""
         for record in self:
-            record.balance = record.income - (
-                record.expenses_other + record.expenses_auto
+            record.balance = (
+                record.initial_balance +
+                record.income -
+                (record.expenses_other + record.expenses_auto)
             )
 
     @api.depends(
@@ -66,7 +71,7 @@ class ManagerFinance(models.Model):
         "manager_id.fuel_price_ids.consumption",
         "manager_id.fuel_price_ids.depreciation",
         "manager_id.fuel_price_ids.date",
-        "manager_id.fuel_price_ids.write_date"
+        "manager_id.fuel_price_ids.write_date",
     )
     def _compute_auto_expenses(self):
         """
@@ -107,14 +112,22 @@ class ManagerFinance(models.Model):
         "manager_id.fuel_price_ids.write_date"
     )
     def _compute_fuel_price(self):
-        """Get most recent fuel price before
-        or on the current record's date.
-        """
+        """Get most recent fuel price before or on the current record's date."""
         for record in self:
             record.fuel_price_id = self.env["fuel.prices"].search([
                 ("manager_id", "=", record.manager_id.id),
                 ("date", "<=", record.date)
             ], order="date desc", limit=1)
+
+    @api.onchange("manager_id", "date")
+    def _onchange_initial_balance(self):
+        """Auto-fill initial balance when manager or date is changed."""
+        if self.manager_id and self.date:
+            previous = self.search([
+                ("manager_id", "=", self.manager_id.id),
+                ("date", "<", self.date)
+            ], order="date desc", limit=1)
+            self.initial_balance = previous.balance if previous else 0.0
 
     def write(self, vals):
         """
@@ -139,6 +152,15 @@ class ManagerFinance(models.Model):
     def create(self, vals_list):
         records = super().create(vals_list)
         for record in records:
+            # Find a previous financial record
+            previous = self.search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "<", record.date)
+            ], order="date desc", limit=1)
+
+            record.initial_balance = previous.balance if previous else 0
+
+            # Sync or create a daily report
             daily = self.env["manager.daily.report"].search([
                 ("manager_id", "=", record.manager_id.id),
                 ("date", "=", record.date)
@@ -149,5 +171,6 @@ class ManagerFinance(models.Model):
                     "date": record.date,
                     "income": record.income,
                     "expenses_manual": record.expenses_other,
+                    "initial_balance": record.initial_balance,
                 })
         return records

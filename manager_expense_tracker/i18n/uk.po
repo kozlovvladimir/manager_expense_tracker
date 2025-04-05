@@ -104,7 +104,13 @@ msgstr "Автоматично створений запис про витрат
 #: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__balance
 #: model_terms:ir.ui.view,arch_db:manager_expense_tracker.finance_report_template
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Баланс на кінець"
+
+#. module: manager_expense_tracker
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_daily_report__initial_balance
+#: model:ir.model.fields,field_description:manager_expense_tracker.field_manager_finance__initial_balance
+msgid "Initial Balance"
+msgstr "Баланс на початок"
 
 #. module: manager_expense_tracker
 #: model:ir.model.fields,help:manager_expense_tracker.field_manager_daily_report__tax_ids

@@ -108,10 +108,3 @@ class BudgetSalesManager(models.Model):
             record.name = (
                 record.manager_id.name) if record.manager_id else "N/A"
 
-    @api.depends("manager_id")
-    def _compute_display_name(self):
-        """
-        Computes the display name for the manager using the manager's name.
-        """
-        for record in self:
-            record.display_name = record.manager_id.name
