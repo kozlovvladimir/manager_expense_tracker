@@ -60,7 +60,9 @@ class ManagerDailyReport(models.Model):
     total_expenses = fields.Float(compute="_compute_total_expenses",
                                   store=True)
 
-    initial_balance = fields.Float(string="Initial Balance", readonly=True, store=True)
+    initial_balance = fields.Float(
+        string="Initial Balance", readonly=True, store=True
+    )
 
     balance = fields.Float(compute="_compute_balance", store=True)
     fuel_expense_id = fields.Many2one(
@@ -129,8 +131,8 @@ class ManagerDailyReport(models.Model):
 
     @api.depends("initial_balance", "income", "total_expenses")
     def _compute_balance(self):
-        for record in self:
-            record.balance = record.initial_balance + record.income - record.total_expenses
+        for r in self:
+            r.balance = r.initial_balance + r.income - r.total_expenses
 
     def _find_finance_or_work_day(self, model):
         return self.env[model].search([

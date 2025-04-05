@@ -107,4 +107,3 @@ class BudgetSalesManager(models.Model):
         for record in self:
             record.name = (
                 record.manager_id.name) if record.manager_id else "N/A"
-

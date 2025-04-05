@@ -39,5 +39,6 @@
         "web.assets_backend": [
             "manager_expense_tracker/static/src/css/custom_styles.css"
         ]
-    }
+    },
+    "valid_odoo_versions": ["18.0"]
 }

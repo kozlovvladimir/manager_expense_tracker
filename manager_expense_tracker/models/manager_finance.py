@@ -112,7 +112,9 @@ class ManagerFinance(models.Model):
         "manager_id.fuel_price_ids.write_date"
     )
     def _compute_fuel_price(self):
-        """Get most recent fuel price before or on the current record's date."""
+        """
+        Get most recent fuel price before or on the current record's date.
+        """
         for record in self:
             record.fuel_price_id = self.env["fuel.prices"].search([
                 ("manager_id", "=", record.manager_id.id),
@@ -121,7 +123,9 @@ class ManagerFinance(models.Model):
 
     @api.onchange("manager_id", "date")
     def _onchange_initial_balance(self):
-        """Auto-fill initial balance when manager or date is changed."""
+        """
+        Auto-fill initial balance when manager or date is changed.
+        """
         if self.manager_id and self.date:
             previous = self.search([
                 ("manager_id", "=", self.manager_id.id),
