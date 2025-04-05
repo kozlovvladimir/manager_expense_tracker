@@ -12,7 +12,7 @@ class ManagerFinance(models.Model):
     _description = "Manager's Finance"
 
     manager_id = fields.Many2one(
-        "budget.sales.manager",
+        comodel_name="budget.sales.manager",
         string="Manager",
         required=True
     )

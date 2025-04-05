@@ -14,7 +14,7 @@ class ManagerWorkDay(models.Model):
     _description = "Manager's Work Day"
 
     manager_id = fields.Many2one(
-        "budget.sales.manager",
+        comodel_name="budget.sales.manager",
         string="Manager",
         required=True
     )

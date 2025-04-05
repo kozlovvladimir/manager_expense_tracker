@@ -25,13 +25,13 @@ class ManagerDailyReport(models.Model):
         string="Taxes"
     )
     employee_id = fields.Many2one(
-        "hr.employee", string="Employee"
+        comodel_name="hr.employee", string="Employee"
     )
     manager_id = fields.Many2one(
-        "budget.sales.manager", string="Manager", required=True
+        comodel_name="budget.sales.manager", string="Manager", required=True
     )
     vehicle_id = fields.Many2one(
-        "fleet.vehicle", string="Vehicle"
+        comodel_name="fleet.vehicle", string="Vehicle"
     )
     date = fields.Date(required=True, default=fields.Date.today)
     description = fields.Char(string="Report Description")
