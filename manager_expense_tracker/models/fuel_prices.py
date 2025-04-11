@@ -16,6 +16,8 @@ class FuelPrices(models.Model):
     _description = "Fuel Prices and Consumption Rates"
     _order = "date desc, id desc"
 
+    _inherit = ['mail.thread']
+
     manager_id = fields.Many2one(
         "budget.sales.manager",
         string="Manager",

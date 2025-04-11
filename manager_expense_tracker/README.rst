@@ -1,4 +1,4 @@
-Budget Sales Tracking
+Manager expense tracker
 =====================
 
 Budget Sales Tracking is a module for tracking workdays, mileage, and financial transactions of budget sales managers in Odoo 18. It integrates with Odoo's HR, accounting, fleet, and sales modules, providing a comprehensive solution for managing sales budgets, including workday tracking, fuel prices, financial records, and daily reports.
