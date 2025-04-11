@@ -1,6 +1,7 @@
 <odoo>
     <data>
 
+        <!-- Form View -->
         <record id="view_manager_work_day_form" model="ir.ui.view">
             <field name="name">manager.work.day.form</field>
             <field name="model">manager.work.day</field>
@@ -26,6 +27,7 @@
             </field>
         </record>
 
+        <!-- List View -->
         <record id="view_manager_work_day_list" model="ir.ui.view">
             <field name="name">manager.work.day.list</field>
             <field name="model">manager.work.day</field>
@@ -42,11 +44,64 @@
             </field>
         </record>
 
+        <!-- Pivot View -->
+        <record id="view_manager_work_day_pivot" model="ir.ui.view">
+            <field name="name">manager.work.day.pivot</field>
+            <field name="model">manager.work.day</field>
+            <field name="type">pivot</field>
+            <field name="arch" type="xml">
+                <pivot string="Work Day Analysis">
+                    <field name="manager_id" type="row"/>
+                    <field name="date" type="col"/>
+                    <field name="km" type="measure"/>
+                    <field name="fuel_expenses" type="measure"/>
+                    <field name="depreciation_expenses" type="measure"/>
+                    <field name="total_expenses" type="measure"/>
+                </pivot>
+            </field>
+        </record>
 
+        <!-- Graph View -->
+        <record id="view_manager_work_day_graph" model="ir.ui.view">
+            <field name="name">manager.work.day.graph</field>
+            <field name="model">manager.work.day</field>
+            <field name="type">graph</field>
+            <field name="arch" type="xml">
+                <graph string="Work Day Graph" type="bar">
+                    <field name="date" type="row"/>
+                    <field name="km" type="measure"/>
+                    <field name="fuel_expenses" type="measure"/>
+                    <field name="total_expenses" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="view_manager_work_day_kanban" model="ir.ui.view">
+            <field name="name">manager.work.day.kanban</field>
+            <field name="model">manager.work.day</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_example">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <field name="date"/>
+                                <div><strong>Manager:</strong> <field name="manager_id"/></div>
+                                <div><strong>KM:</strong> <field name="km"/></div>
+                                <div><strong>Total Expenses:</strong> <field name="total_expenses"/></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Action -->
         <record id="action_manager_work_day" model="ir.actions.act_window">
             <field name="name">Manager Work Days</field>
             <field name="res_model">manager.work.day</field>
-            <field name="view_mode">list,form</field>
+            <field name="view_mode">list,form,pivot,graph,kanban</field>
         </record>
 
     </data>
