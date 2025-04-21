@@ -304,3 +304,22 @@ class ManagerDailyReport(models.Model):
                         (finance.expenses_other + finance.expenses_auto)
                 )
                 previous_balance = finance.balance
+
+    def unlink(self):
+        for record in self:
+            finance = self.env["manager.finance"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if finance:
+                finance.with_context(from_daily_report=True).unlink()
+
+            work_day = self.env["manager.work.day"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+            if work_day:
+                work_day.with_context(from_daily_report=True).unlink()
+
+        return super().unlink()
+

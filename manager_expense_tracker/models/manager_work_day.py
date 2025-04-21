@@ -87,7 +87,8 @@ class ManagerWorkDay(models.Model):
                 record.fuel_consumption_per_100km = 0
                 record.depreciation_rate = 0
 
-    @api.depends("km", "fuel_price_per_liter", "fuel_consumption_per_100km")
+    @api.depends(
+        "km", "fuel_price_per_liter", "fuel_consumption_per_100km")
     def _compute_fuel_expenses(self):
         for record in self:
             record.fuel_expenses = (
@@ -145,3 +146,47 @@ class ManagerWorkDay(models.Model):
                 daily_report.write(vals)
             else:
                 self.env["manager.daily.report"].create(vals)
+
+    def _should_remove_daily_report(self, manager_id, date):
+        work_day_exists = self.env["manager.work.day"].search_count([
+            ("manager_id", "=", manager_id),
+            ("date", "=", date),
+            ("id", "!=", self.id)
+        ]) > 0
+
+        finance_exists = self.env["manager.finance"].search_count([
+            ("manager_id", "=", manager_id),
+            ("date", "=", date)
+        ]) > 0
+
+        return not work_day_exists and not finance_exists
+
+    def unlink(self):
+        if self.env.context.get("from_daily_report"):
+            return super().unlink()
+
+        def _is_zero_or_none(val):
+            return val is None or abs(val) < 0.0001
+
+        for record in self:
+            report = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+
+            if report:
+                if self._should_remove_daily_report(record.manager_id.id,
+                                                    record.date):
+                    report.unlink()
+                else:
+                    report.with_context(sync_from_work_day=True).write({
+                        "odometer_start": 0.0,
+                        "odometer_end": 0.0,
+                        "distance": 0.0,
+                    })
+
+        return super().unlink()
+
+
+
+

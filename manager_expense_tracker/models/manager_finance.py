@@ -60,9 +60,9 @@ class ManagerFinance(models.Model):
         """Calculate balance = initial + income - (manual + auto expenses)."""
         for record in self:
             record.balance = (
-                record.initial_balance +
-                record.income -
-                (record.expenses_other + record.expenses_auto)
+                    record.initial_balance +
+                    record.income -
+                    (record.expenses_other + record.expenses_auto)
             )
 
     @api.depends(
@@ -200,3 +200,49 @@ class ManagerFinance(models.Model):
                     "initial_balance": record.initial_balance,
                 })
         return records
+
+    def _should_remove_daily_report(self, manager_id, date):
+        work_day_exists = self.env["manager.work.day"].search_count([
+            ("manager_id", "=", manager_id),
+            ("date", "=", date)
+        ]) > 0
+
+        finance_exists = self.env["manager.finance"].search_count([
+            ("manager_id", "=", manager_id),
+            ("date", "=", date),
+            ("id", "!=", self.id)
+        ]) > 0
+
+        return not work_day_exists and not finance_exists
+
+    def unlink(self):
+        if self.env.context.get("from_daily_report"):
+            return super().unlink()
+
+        def _is_zero_or_none(val):
+            return val is None or abs(val) < 0.0001
+
+        for record in self:
+            report = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", "=", record.date)
+            ], limit=1)
+
+            if report:
+                if self._should_remove_daily_report(record.manager_id.id,
+                                                    record.date):
+                    report.unlink()
+                else:
+                    report.with_context(sync_from_finance=True).write({
+                        "income": 0.0,
+                        "expenses_manual": 0.0,
+                        "initial_balance": 0.0,
+                    })
+
+        return super().unlink()
+
+
+
+
+
+
