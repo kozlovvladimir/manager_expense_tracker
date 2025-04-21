@@ -176,4 +176,3 @@ class FuelPrices(models.Model):
                 report._compute_balance()
 
         return records
-

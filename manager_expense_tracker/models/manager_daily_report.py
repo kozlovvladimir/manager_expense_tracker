@@ -336,4 +336,3 @@ class ManagerDailyReport(models.Model):
                 work_day.with_context(from_daily_report=True).unlink()
 
         return super().unlink()
-
