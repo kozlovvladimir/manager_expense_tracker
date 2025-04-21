@@ -193,6 +193,9 @@ class ManagerDailyReport(models.Model):
                 finance.expenses_other = self.expenses_manual
                 finance.balance = self.balance
 
+                # Recalculation of the following financial records
+                self._update_following_finance_records()
+
     @api.onchange("odometer_start", "odometer_end")
     def _onchange_odometer_sync_to_work_day(self):
         if self.manager_id and self.date:
@@ -253,6 +256,21 @@ class ManagerDailyReport(models.Model):
 
         return records
 
+    def write(self, vals):
+        """
+        Ensure changes to income or expenses are reflected in manager.finance
+        and update following finance records when updated via write().
+        """
+        result = super().write(vals)
+        for record in self:
+            finance = record._find_finance_or_work_day("manager.finance")
+            if finance:
+                finance.income = record.income
+                finance.expenses_other = record.expenses_manual
+                finance.balance = record.balance
+                record._update_following_finance_records()
+        return result
+
     def action_print_report(self):
         """
         Generate and return the finance PDF report for the daily report.
@@ -260,3 +278,26 @@ class ManagerDailyReport(models.Model):
         return self.env.ref(
             'manager_expense_tracker.action_finance_report'
         ).report_action(self)
+
+    def _update_following_finance_records(self):
+        """
+        Update all following manager.finance records (initial_balance, balance)
+        starting from the date after the current one.
+        """
+        for rec in self:
+            finances = self.env["manager.finance"].search([
+                ("manager_id", "=", rec.manager_id.id),
+                ("date", ">", rec.date)
+            ], order="date")
+
+            # We start with the balance of the current record
+            previous_balance = rec.balance
+
+            for finance in finances:
+                finance.initial_balance = previous_balance
+                finance.balance = (
+                        previous_balance +
+                        finance.income -
+                        (finance.expenses_other + finance.expenses_auto)
+                )
+                previous_balance = finance.balance

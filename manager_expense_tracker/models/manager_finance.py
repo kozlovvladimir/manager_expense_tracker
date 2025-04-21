@@ -136,7 +136,7 @@ class ManagerFinance(models.Model):
     def write(self, vals):
         """
         Sync financial changes (income, expenses, balance)
-        with manager.daily.report if exists.
+        with manager.daily.report if exists, and update following reports.
         """
         res = super().write(vals)
         for record in self:
@@ -150,7 +150,29 @@ class ManagerFinance(models.Model):
                     "expenses_manual": record.expenses_other,
                     "balance": record.balance,
                 })
+            # Update the following reports
+            record._update_following_daily_reports()
         return res
+
+    def _update_following_daily_reports(self):
+        """
+        Update all following daily reports' initial_balance and balance
+        starting from the day after current record.
+        """
+        for record in self:
+            # We receive all the following daily reports
+            next_reports = self.env["manager.daily.report"].search([
+                ("manager_id", "=", record.manager_id.id),
+                ("date", ">", record.date)
+            ], order="date")
+
+            prev_balance = record.balance
+
+            for report in next_reports:
+                report.initial_balance = prev_balance
+                report._compute_total_expenses()
+                report._compute_balance()
+                prev_balance = report.balance
 
     @api.model_create_multi
     def create(self, vals_list):
