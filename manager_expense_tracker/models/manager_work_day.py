@@ -4,7 +4,7 @@ This model records odometer readings, calculates travel distance,
 fuel and depreciation expenses, and synchronizes the data with daily reports.
 """
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class ManagerWorkDay(models.Model):
@@ -109,11 +109,26 @@ class ManagerWorkDay(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """Create manager work day records and sync with daily report."""
+        for vals in vals_list:
+            manager_id = vals.get("manager_id")
+            date = vals.get("date")
+
+            if manager_id and date:
+                existing = self.search([
+                    ("manager_id", "=", manager_id),
+                    ("date", "=", date)
+                ], limit=1)
+                if existing:
+                    raise ValueError(
+                        _("Work day entry for this manager"
+                          "already exists on this date.")
+                    )
+
         records = super().create(vals_list)
-        # Although this accesses a protected method,
-        # it's part of the same model logic
-        records._sync_with_daily_report()
+
+        for rec in records:
+            rec._sync_with_daily_report()
+
         return records
 
     def write(self, vals):

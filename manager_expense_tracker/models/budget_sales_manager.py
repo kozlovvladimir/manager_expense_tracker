@@ -6,7 +6,7 @@ and finance records. It is essential for managing and tracking the
 operational and financial data of sales managers.
 """
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 """
 This module defines the Budget Sales Manager model,
@@ -107,3 +107,20 @@ class BudgetSalesManager(models.Model):
         for record in self:
             record.name = (
                 record.manager_id.name) if record.manager_id else "N/A"
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            manager = self.env["res.users"].browse(vals.get("manager_id"))
+            if manager:
+                existing = self.search([
+                    ("manager_id", "=", manager.id)
+                ], limit=1)
+                if existing:
+                    raise ValueError(
+                        _(
+                            "A manager with the name '%s' already exists!"
+                        ) % manager.name
+                    )
+
+        return super().create(vals_list)

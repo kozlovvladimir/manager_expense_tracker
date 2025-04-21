@@ -2,7 +2,7 @@
 and finances for managers.
 """
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 
 
 class ManagerDailyReport(models.Model):
@@ -229,17 +229,31 @@ class ManagerDailyReport(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         """
-        Override the create method to auto-assign employee_id,
-        set initial_balance, and create a fuel expense if needed.
+        Override the create method to:
+        - auto-assign employee_id,
+        - set initial_balance,
+        - check uniqueness by (manager_id, date),
+        - create a fuel expense if needed.
         """
         for vals in vals_list:
-            if not vals.get("employee_id") and vals.get("manager_id"):
-                manager = self.env["budget.sales.manager"].browse(
-                    vals["manager_id"]
-                )
-                employee = self.env["hr.employee"].search([(
-                    "user_id", "=", manager.manager_id.id
-                )], limit=1)
+            manager_id = vals.get("manager_id")
+            date = vals.get("date")
+            if manager_id and date:
+                existing = self.search([
+                    ("manager_id", "=", manager_id),
+                    ("date", "=", date)
+                ], limit=1)
+                if existing:
+                    raise ValueError(
+                        _("Daily report for this manager on this date"
+                          "already exists.")
+                    )
+
+            if not vals.get("employee_id") and manager_id:
+                manager = self.env["budget.sales.manager"].browse(manager_id)
+                employee = self.env["hr.employee"].search([
+                    ("user_id", "=", manager.manager_id.id)
+                ], limit=1)
                 if employee:
                     vals["employee_id"] = employee.id
 

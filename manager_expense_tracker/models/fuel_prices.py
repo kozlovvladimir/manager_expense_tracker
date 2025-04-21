@@ -148,20 +148,32 @@ class FuelPrices(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """
-        Override create to recompute reports affected
-        by new fuel price entries.
-        """
+        for vals in vals_list:
+            manager_id = vals.get("manager_id")
+            date = vals.get("date")
+
+            if manager_id and date:
+                exists = self.search([
+                    ("manager_id", "=", manager_id),
+                    ("date", "=", date)
+                ], limit=1)
+                if exists:
+                    raise ValueError(_(
+                        "A fuel price for this manager already exists"
+                        "for this date."))
+
         records = super().create(vals_list)
+
         for record in records:
             reports = self.env['manager.daily.report'].search([
                 ('manager_id', '=', record.manager_id.id),
                 ('date', '=', record.date)
             ])
             for report in reports:
-                # Accessing protected methods: acceptable within model logic
                 report._compute_fuel_price()
                 report._compute_fuel_expenses()
                 report._compute_total_expenses()
                 report._compute_balance()
+
         return records
+

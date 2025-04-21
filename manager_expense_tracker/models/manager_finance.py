@@ -176,9 +176,23 @@ class ManagerFinance(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        for vals in vals_list:
+            manager_id = vals.get("manager_id")
+            date = vals.get("date")
+
+            if manager_id and date:
+                exists = self.search([
+                    ("manager_id", "=", manager_id),
+                    ("date", "=", date)
+                ], limit=1)
+                if exists:
+                    raise ValueError(
+                        "A financial record for this manager"
+                        "already exists on this date.")
+
         records = super().create(vals_list)
+
         for record in records:
-            # Find a previous financial record
             previous = self.search([
                 ("manager_id", "=", record.manager_id.id),
                 ("date", "<", record.date)
@@ -186,7 +200,6 @@ class ManagerFinance(models.Model):
 
             record.initial_balance = previous.balance if previous else 0
 
-            # Sync or create a daily report
             daily = self.env["manager.daily.report"].search([
                 ("manager_id", "=", record.manager_id.id),
                 ("date", "=", record.date)
@@ -199,6 +212,7 @@ class ManagerFinance(models.Model):
                     "expenses_manual": record.expenses_other,
                     "initial_balance": record.initial_balance,
                 })
+
         return records
 
     def _should_remove_daily_report(self, manager_id, date):
