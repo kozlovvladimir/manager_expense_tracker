@@ -263,12 +263,15 @@ class ManagerDailyReport(models.Model):
         """
         result = super().write(vals)
         for record in self:
-            finance = record._find_finance_or_work_day("manager.finance")
-            if finance:
-                finance.income = record.income
-                finance.expenses_other = record.expenses_manual
-                finance.balance = record.balance
-                record._update_following_finance_records()
+            if not self.env.context.get("sync_from_finance"):
+                finance = record._find_finance_or_work_day("manager.finance")
+                if finance:
+                    finance.with_context(sync_from_report=True).write({
+                        "income": record.income,
+                        "expenses_other": record.expenses_manual,
+                        "balance": record.balance,
+                    })
+            record._update_following_finance_records()
         return result
 
     def action_print_report(self):

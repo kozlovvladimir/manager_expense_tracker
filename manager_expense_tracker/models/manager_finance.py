@@ -140,17 +140,17 @@ class ManagerFinance(models.Model):
         """
         res = super().write(vals)
         for record in self:
-            report = self.env["manager.daily.report"].search([
-                ("manager_id", "=", record.manager_id.id),
-                ("date", "=", record.date)
-            ], limit=1)
-            if report:
-                report.write({
-                    "income": record.income,
-                    "expenses_manual": record.expenses_other,
-                    "balance": record.balance,
-                })
-            # Update the following reports
+            if not self.env.context.get("sync_from_report"):
+                report = self.env["manager.daily.report"].search([
+                    ("manager_id", "=", record.manager_id.id),
+                    ("date", "=", record.date)
+                ], limit=1)
+                if report:
+                    report.with_context(sync_from_finance=True).write({
+                        "income": record.income,
+                        "expenses_manual": record.expenses_other,
+                        "balance": record.balance,
+                    })
             record._update_following_daily_reports()
         return res
 
