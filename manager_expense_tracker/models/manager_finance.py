@@ -254,9 +254,3 @@ class ManagerFinance(models.Model):
                     })
 
         return super().unlink()
-
-
-
-
-
-

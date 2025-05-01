@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+
+        <!-- Server Action для запуску з меню -->
+        <record id="action_fetch_a95_price" model="ir.actions.server">
+            <field name="name">Fetch A-95 from WOG (Action)</field>
+            <field name="model_id" ref="model_fuel_price_history"/>
+            <field name="state">code</field>
+            <field name="code">model.fetch_a95_price()</field>
+        </record>
+
+        <!-- Подання списку -->
+        <record id="view_fuel_price_history_list" model="ir.ui.view">
+            <field name="name">fuel.price.history.list</field>
+            <field name="model">fuel.price.history</field>
+            <field name="arch" type="xml">
+                <list string="Fuel Price History">
+                    <field name="date"/>
+                    <field name="price"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Подання форми -->
+        <record id="view_fuel_price_history_form" model="ir.ui.view">
+            <field name="name">fuel.price.history.form</field>
+            <field name="model">fuel.price.history</field>
+            <field name="arch" type="xml">
+                <form string="Fuel Price Record">
+                    <header>
+                        <button name="fetch_a95_price"
+                                type="object"
+                                string="Fetch A-95 from WOG"
+                                class="btn-primary"
+                                icon="fa-download"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="date"/>
+                            <field name="price"/> <!-- поле editable -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Графік -->
+        <record id="view_fuel_price_history_graph" model="ir.ui.view">
+            <field name="name">fuel.price.history.graph</field>
+            <field name="model">fuel.price.history</field>
+            <field name="arch" type="xml">
+                <graph string="Fuel Price Trend" type="line">
+                    <field name="date" type="row"/>
+                    <field name="price" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Зведена таблиця -->
+        <record id="view_fuel_price_history_pivot" model="ir.ui.view">
+            <field name="name">fuel.price.history.pivot</field>
+            <field name="model">fuel.price.history</field>
+            <field name="arch" type="xml">
+                <pivot string="Fuel Price Pivot">
+                    <field name="date" type="col"/>
+                    <field name="price" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- Основна дія -->
+        <record id="action_fuel_price_history" model="ir.actions.act_window">
+            <field name="name">Fuel A-95 Price History</field>
+            <field name="res_model">fuel.price.history</field>
+            <field name="view_mode">list,form,graph,pivot</field>
+        </record>
+
+    </data>
+</odoo>

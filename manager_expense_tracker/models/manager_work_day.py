@@ -201,7 +201,3 @@ class ManagerWorkDay(models.Model):
                     })
 
         return super().unlink()
-
-
-
-

@@ -1,7 +1,6 @@
 {
     "name": "Budget Sales Tracking",
-    "summary": "Tracking work days, mileage, and finances"
-               "of budget sales managers",
+    "summary": "Tracking work days, mileage, and finances",
     "description": "This module tracks workdays, mileage,"
                    "and financial transactions of budget sales managers.",
     "author": "Volodymyr Kozlov",
@@ -18,7 +17,9 @@
         "wizard/fuel_price_update.xml",
         "report/finance_report_template.xml",
         "views/manager_daily_report_views.xml",
-        "views/menu_views.xml"
+        "views/fuel_price_history_views.xml",
+        "views/menu_views.xml",
+        "data/fuel_price_cron.xml"
     ],
     "demo": [
         "demo/manager_users_demo.xml",

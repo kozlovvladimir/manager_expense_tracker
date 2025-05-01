@@ -16,3 +16,6 @@ access_fuel_price_update_wizard,fuel.price.update.wizard user,model_fuel_price_u
 
 access_manager_daily_report_user,manager.daily.report user,model_manager_daily_report,group_budget_sales_user,1,0,0,0
 access_manager_daily_report_admin,manager.daily.report admin,model_manager_daily_report,group_budget_sales_admin,1,1,1,1
+
+access_fuel_price_history_user,fuel.price.history user,model_fuel_price_history,group_budget_sales_user,1,0,0,0
+access_fuel_price_history_admin,fuel.price.history admin,model_fuel_price_history,group_budget_sales_admin,1,1,1,1

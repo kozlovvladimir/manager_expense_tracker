@@ -3,54 +3,62 @@
 
         <!-- Root Menu: Budget Sales Tracking -->
         <menuitem
-            id="menu_budget_sales_tracking_root"
-            name="Budget Sales Tracking"
-            sequence="10"
-            web_icon="manager_expense_tracker,static/description/icon.png"
+                id="menu_budget_sales_tracking_root"
+                name="Budget Sales Tracking"
+                sequence="10"
+                web_icon="manager_expense_tracker,static/description/icon.png"
         />
 
         <!-- Sales Managers -->
         <menuitem
-            id="menu_budget_sales_manager"
-            name="Sales Managers"
-            parent="menu_budget_sales_tracking_root"
-            sequence="20"
-            action="action_budget_sales_manager"
+                id="menu_budget_sales_manager"
+                name="Sales Managers"
+                parent="menu_budget_sales_tracking_root"
+                sequence="20"
+                action="action_budget_sales_manager"
         />
 
         <!-- Manager Work Days -->
         <menuitem
-            id="menu_manager_work_day"
-            name="Manager Work Days"
-            parent="menu_budget_sales_tracking_root"
-            sequence="30"
-            action="action_manager_work_day"
+                id="menu_manager_work_day"
+                name="Manager Work Days"
+                parent="menu_budget_sales_tracking_root"
+                sequence="30"
+                action="action_manager_work_day"
         />
 
         <!-- Manager Finance -->
         <menuitem
-            id="menu_manager_finance"
-            name="Manager Finance"
-            parent="menu_budget_sales_tracking_root"
-            sequence="40"
-            action="action_manager_finance"
+                id="menu_manager_finance"
+                name="Manager Finance"
+                parent="menu_budget_sales_tracking_root"
+                sequence="40"
+                action="action_manager_finance"
         />
 
         <!-- Fuel Prices -->
         <menuitem
-            id="menu_fuel_prices"
-            name="Fuel Prices"
-            parent="menu_budget_sales_tracking_root"
-            sequence="50"
-            action="action_fuel_prices"
+                id="menu_fuel_prices"
+                name="Fuel Prices"
+                parent="menu_budget_sales_tracking_root"
+                sequence="50"
+                action="action_fuel_prices"
         />
 
         <menuitem
-            id="menu_manager_daily_report"
-            name="Manager Daily Reports"
-            parent="menu_budget_sales_tracking_root"
-            sequence="60"
-            action="action_manager_daily_report"
+                id="menu_manager_daily_report"
+                name="Manager Daily Reports"
+                parent="menu_budget_sales_tracking_root"
+                sequence="60"
+                action="action_manager_daily_report"
+        />
+
+        <menuitem
+                id="menu_fuel_price_history"
+                name="Fuel A-95 History"
+                parent="menu_budget_sales_tracking_root"
+                sequence="70"
+                action="action_fuel_price_history"
         />
 
 

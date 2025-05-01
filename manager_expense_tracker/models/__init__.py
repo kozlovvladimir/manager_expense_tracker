@@ -3,3 +3,4 @@ from . import manager_work_day
 from . import manager_finance
 from . import fuel_prices
 from . import manager_daily_report
+from . import fuel_price_history
